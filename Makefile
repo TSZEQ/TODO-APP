@@ -1,1 +1,1 @@
-BASIC_CFLAGS = 
+BASIC_CFLAGS = -Wall -O3 -f
