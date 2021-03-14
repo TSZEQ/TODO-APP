@@ -1,1 +1,1 @@
-BASIC_CFLAGS = -Wall -O3 -f
+BASIC_CFLAGS = -Wall -O3 -fPIC -g -std=c
