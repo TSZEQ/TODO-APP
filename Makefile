@@ -5,4 +5,5 @@ ALL_CFLAGS = $(BASIC_CFLAGS) $(CFLAGS)
 PREFIX = /usr/local
 RM = rm -f
 INSTALL = install -p
-INSTALL_EXEC = $(INSTA
+INSTALL_EXEC = $(INSTALL) -m 0755
+IN
