@@ -6,4 +6,4 @@ PREFIX = /usr/local
 RM = rm -f
 INSTALL = install -p
 INSTALL_EXEC = $(INSTALL) -m 0755
-IN
+INSTALL_DATA = 
