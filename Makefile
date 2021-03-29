@@ -8,4 +8,6 @@ INSTALL = install -p
 INSTALL_EXEC = $(INSTALL) -m 0755
 INSTALL_DATA = $(INSTALL) -m 0644
 LUA_VERSION = 5.2
-MODULE_NAME = 
+MODULE_NAME = ssocket
+
+uname
