@@ -13,4 +13,4 @@ MODULE_NAME = ssocket
 uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
 
 ifeq ($(uname_S), Darwin)
-	SHARELIB_FLAGS = -dynamiclib -Wl,-undefin
+	SHARELIB_FLAGS = -dynamiclib -Wl,-undefined,dynamic_l
