@@ -15,4 +15,7 @@ uname_S := $(shell sh -c 'uname -s 2>/dev/null || echo not')
 ifeq ($(uname_S), Darwin)
 	SHARELIB_FLAGS = -dynamiclib -Wl,-undefined,dynamic_lookup
 else
-	SHARELIB_FLAGS = --sha
+	SHARELIB_FLAGS = --shared
+endif
+
+all: $(MODUL
