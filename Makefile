@@ -18,4 +18,6 @@ else
 	SHARELIB_FLAGS = --shared
 endif
 
-all: $(MODUL
+all: $(MODULE_NAME).so
+
+L
