@@ -20,4 +20,4 @@ endif
 
 all: $(MODULE_NAME).so
 
-L
+LIB_H += $(wild
