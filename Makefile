@@ -20,4 +20,6 @@ endif
 
 all: $(MODULE_NAME).so
 
-LIB_H += $(wild
+LIB_H += $(wildcard *.h)
+
+OBJE
