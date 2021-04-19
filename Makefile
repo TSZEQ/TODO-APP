@@ -22,4 +22,4 @@ all: $(MODULE_NAME).so
 
 LIB_H += $(wildcard *.h)
 
-OBJE
+OBJECTS += socket.
