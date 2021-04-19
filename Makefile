@@ -23,4 +23,5 @@ all: $(MODULE_NAME).so
 LIB_H += $(wildcard *.h)
 
 OBJECTS += socket.o
-OBJECTS += timeou
+OBJECTS += timeout.o
+OBJECTS +
