@@ -24,4 +24,4 @@ LIB_H += $(wildcard *.h)
 
 OBJECTS += socket.o
 OBJECTS += timeout.o
-OBJECTS +
+OBJECTS += buffer.o
