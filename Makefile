@@ -26,4 +26,6 @@ OBJECTS += socket.o
 OBJECTS += timeout.o
 OBJECTS += buffer.o
 
-$(OBJECTS): $(LIB_H
+$(OBJECTS): $(LIB_H)
+
+$(OBJECTS
