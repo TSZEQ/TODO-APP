@@ -25,3 +25,5 @@ LIB_H += $(wildcard *.h)
 OBJECTS += socket.o
 OBJECTS += timeout.o
 OBJECTS += buffer.o
+
+$(OBJECTS): $(LIB_H
