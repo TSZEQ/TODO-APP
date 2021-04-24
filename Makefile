@@ -28,4 +28,5 @@ OBJECTS += buffer.o
 
 $(OBJECTS): $(LIB_H)
 
-$(OBJECTS
+$(OBJECTS): %.o: %.c
+	
