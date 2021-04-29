@@ -31,4 +31,5 @@ $(OBJECTS): $(LIB_H)
 $(OBJECTS): %.o: %.c
 	$(CC) -o $*.o -c $(ALL_CFLAGS) $<
 
-$(MODULE_NAME).so: $(OBJE
+$(MODULE_NAME).so: $(OBJECTS)
+	$(CC) $(SHAR
