@@ -31,4 +31,4 @@ $(OBJECTS): $(LIB_H)
 $(OBJECTS): %.o: %.c
 	$(CC) -o $*.o -c $(ALL_CFLAGS) $<
 
-$(MODULE
+$(MODULE_NAME).so: $(OBJE
