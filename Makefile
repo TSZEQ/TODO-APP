@@ -34,4 +34,5 @@ $(OBJECTS): %.o: %.c
 $(MODULE_NAME).so: $(OBJECTS)
 	$(CC) $(SHARELIB_FLAGS) -o $@ $^
 
-in
+install: all
+	$(INS
