@@ -32,4 +32,6 @@ $(OBJECTS): %.o: %.c
 	$(CC) -o $*.o -c $(ALL_CFLAGS) $<
 
 $(MODULE_NAME).so: $(OBJECTS)
-	$(CC) $(SHAR
+	$(CC) $(SHARELIB_FLAGS) -o $@ $^
+
+in
