@@ -35,4 +35,4 @@ $(MODULE_NAME).so: $(OBJECTS)
 	$(CC) $(SHARELIB_FLAGS) -o $@ $^
 
 install: all
-	$(INSTALL_DATA) $(MODULE_NAME).so $(PREFIX)/lib/lua/$(LUA_V
+	$(INSTALL_DATA) $(MODULE_NAME).so $(PREFIX)/lib/lua/$(LUA_VERSION)/$(MOD
