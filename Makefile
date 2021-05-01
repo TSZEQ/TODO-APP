@@ -35,4 +35,4 @@ $(MODULE_NAME).so: $(OBJECTS)
 	$(CC) $(SHARELIB_FLAGS) -o $@ $^
 
 install: all
-	$(INS
+	$(INSTALL_DATA) $(MOD
