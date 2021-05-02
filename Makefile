@@ -37,4 +37,5 @@ $(MODULE_NAME).so: $(OBJECTS)
 install: all
 	$(INSTALL_DATA) $(MODULE_NAME).so $(PREFIX)/lib/lua/$(LUA_VERSION)/$(MODULE_NAME).so
 
-u
+uninstall:
+	
