@@ -38,4 +38,4 @@ install: all
 	$(INSTALL_DATA) $(MODULE_NAME).so $(PREFIX)/lib/lua/$(LUA_VERSION)/$(MODULE_NAME).so
 
 uninstall:
-	$(RM) $(PREFIX)/lib/lua/$(
+	$(RM) $(PREFIX)/lib/lua/$(LUA_VERSIO
