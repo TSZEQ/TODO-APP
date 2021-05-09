@@ -40,4 +40,5 @@ install: all
 uninstall:
 	$(RM) $(PREFIX)/lib/lua/$(LUA_VERSION)/$(MODULE_NAME).so
 
-test: 
+test: all
+	@prove --exec=l
