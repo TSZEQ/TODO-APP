@@ -41,4 +41,4 @@ uninstall:
 	$(RM) $(PREFIX)/lib/lua/$(LUA_VERSION)/$(MODULE_NAME).so
 
 test: all
-	@prove --exec=l
+	@prove --exec=lua --timer t/t
