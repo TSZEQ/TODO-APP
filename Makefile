@@ -44,4 +44,4 @@ test: all
 	@prove --exec=lua --timer t/test-*.lua
 
 tags:
-	f
+	find . \( -name .git
