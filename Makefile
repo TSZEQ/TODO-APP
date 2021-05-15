@@ -44,4 +44,4 @@ test: all
 	@prove --exec=lua --timer t/test-*.lua
 
 tags:
-	find . \( -name .git -type d -prune \) -o
+	find . \( -name .git -type d -prune \) -o \( -name '*.[hc]' -t
