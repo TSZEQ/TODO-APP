@@ -47,4 +47,4 @@ tags:
 	find . \( -name .git -type d -prune \) -o \( -name '*.[hc]' -type f -print \) | xargs ctags -a
 
 clean:
-	$(RM
+	$(RM) $(MODULE_NA
