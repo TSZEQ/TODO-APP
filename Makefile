@@ -48,4 +48,4 @@ tags:
 
 clean:
 	$(RM) $(MODULE_NAME).so
-	$(RM) 
+	$(RM) -r $(MODULE_NA
