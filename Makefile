@@ -48,4 +48,5 @@ tags:
 
 clean:
 	$(RM) $(MODULE_NAME).so
-	$(RM) -r $(MODULE_NA
+	$(RM) -r $(MODULE_NAME).so.dSYM
+	$(R
