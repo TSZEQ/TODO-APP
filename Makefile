@@ -49,4 +49,6 @@ tags:
 clean:
 	$(RM) $(MODULE_NAME).so
 	$(RM) -r $(MODULE_NAME).so.dSYM
-	$(R
+	$(RM) $(OBJECTS)
+
+.P
