@@ -51,4 +51,4 @@ clean:
 	$(RM) -r $(MODULE_NAME).so.dSYM
 	$(RM) $(OBJECTS)
 
-.P
+.PHONY: all install 
