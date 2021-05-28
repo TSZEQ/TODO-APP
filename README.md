@@ -39,3 +39,35 @@ More examples, see *examples/* folder.
 #### socket.tcp
 
     `tcpsock, err = socket.tcp()`
+
+#### socket.udp
+
+    `udpsock, err = socket.udp()`
+
+#### socket.select
+
+    `readfds, writefds, err = socket.select(readfds, writefds[, timeout=-1])`
+
+### TCP Socket Object
+
+#### tcpsock:connect
+
+    `ok, err = tcpsock:connect(host, port)`
+    `ok, err = tcpsock:connect("unix:/path/to/unix-domain.sock")`
+
+#### tcpsock:bind
+
+    `ok, err = tcpsock:bind(host, port)`
+    `ok, err = tcpsock:bind("unix:/path/to/unix-domain.sock")`
+
+#### tcpsock:listen
+
+    `ok, err = tcpsock:listen(backlog)`
+
+#### tcpsock:accept
+
+    `tcpsock, err = tcpsock:accept()`
+
+#### tcpsock:write
+
+    `bytes, err = tcpsock:write(data)`
