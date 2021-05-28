@@ -26,3 +26,16 @@ tcpsock:close()
 ```
 
 More examples, see *examples/* folder.
+
+## Installation
+
+    $ git clone git://github.com/cofyc/lua-ssocket.git
+    $ make install
+
+## Docs
+
+### Socket Module
+
+#### socket.tcp
+
+    `tcpsock, err = socket.tcp()`
