@@ -106,3 +106,22 @@ For example:
 ```
 
 This iterator function returns the received data right before the specified
+pattern string in the incoming data stream.
+
+In case of error, it will return nil along with a string describing the
+error and the partial data bytes that have been read so far.
+
+#### tcpsock:close
+  
+    `ok, err = tcpsock:close()`
+
+Closes the current TCP or stream unix domain socket. It returns the 1 in case
+of success and returns nil with a string describing the error otherwise.
+
+#### tcpsock:shutdown
+
+    `ok, err = tcpsock:shutdown(how)`
+
+#### tcpsock:fileno
+
+    `fd = tcpsock:fileno()`
