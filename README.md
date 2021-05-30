@@ -125,3 +125,18 @@ of success and returns nil with a string describing the error otherwise.
 #### tcpsock:fileno
 
     `fd = tcpsock:fileno()`
+
+#### tcpsock:setopt
+
+    `ok, err = tcpsock:setopt(opt, value)`
+
+#### tcpsock:getopt
+
+    `value, err = tcpsock:getopt(level, opt)`
+
+#### tcpsock:settimeout
+
+    `tcpsock:settimeout(timeout)`
+
+Set the timeout in seconds for subsequent socket operations.
+A negative timeout indicates that timeout is disabled, which is default.
