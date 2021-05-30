@@ -140,3 +140,20 @@ of success and returns nil with a string describing the error otherwise.
 
 Set the timeout in seconds for subsequent socket operations.
 A negative timeout indicates that timeout is disabled, which is default.
+
+#### tcpsock:gettimeout
+
+    `timeout = tcpsock:gettimeout()`
+
+Returns the timeout in seconds associated with socket.
+A negative timeout indicates that timeout is disabled, which is default.
+
+#### tcpsock:getpeername
+
+    `addr, err = tcpsock:getpeername()`
+
+#### tcpsock:getsockname
+
+    `addr, err = tcpsock:getsockname()`
+
+### UDP Socket Object
