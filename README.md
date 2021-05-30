@@ -92,3 +92,17 @@ stream until it sees the specified pattern or an error occurs.
 
 It also takes an optional inclusive argument to control whether to include
 the pattern string in the returned data string. Default to false.
+
+For example:
+
+```
+    local reader = tcpsock:readuntil("\r\n")
+    while true do
+        local data, err, partial = reader()
+        if data then
+            printf("line: " .. data)
+        end
+    end
+```
+
+This iterator function returns the received data right before the specified
