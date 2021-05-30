@@ -71,3 +71,24 @@ More examples, see *examples/* folder.
 #### tcpsock:write
 
     `bytes, err = tcpsock:write(data)`
+
+#### tcpsock:read
+
+    `data, err, partial = tcpsock:read(size)`
+
+Read specified size of data from socket. This method will not return until
+it reads exactly the size of data or an error occurs.
+
+In case of success, it returns the data received; in case of error, it
+returns nil with a string describing the error and the partial data received
+so far.
+
+#### tcpsock:readuntil
+
+    `iterator, err = tcpsock:readuntil(pattern, inclusive?)`
+
+This method returns an iterator function that can be called to read the data
+stream until it sees the specified pattern or an error occurs.
+
+It also takes an optional inclusive argument to control whether to include
+the pattern string in the returned data string. Default to false.
