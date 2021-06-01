@@ -157,3 +157,21 @@ A negative timeout indicates that timeout is disabled, which is default.
     `addr, err = tcpsock:getsockname()`
 
 ### UDP Socket Object
+
+#### udpsock:connect
+
+    `ok, err = udpsock:connect(host, port)`
+    `ok, err = udpsock:connect("unix:/path/to/unix-domain.sock")`
+
+Calling connect() on a datagram socket causes the kernel to record a particular
+address as this socket’s peer.
+We can change the peer of a connected datagram socket by issuing a further
+connect() call. 
+
+#### udpsock:bind
+
+    `ok, err = udpsock:bind(host, port)`
+    `ok, err = udpsock:bind("unix:/path/to/unix-domain.sock")`
+
+#### udpsock:recv
+  
