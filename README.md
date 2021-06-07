@@ -186,3 +186,21 @@ returns nil with a string describing the error.
 #### udpsock:recvfrom
 
     `data, addr, err = udpsock:recvfrom(buffersize)`
+
+Works exactly as the udpsock:recv method, except it returns the `addr` as extra
+return values (and is therefore slightly less efficient) in
+case of success.
+
+#### udpsock:send
+
+    `ok, err = tcpsock:write(data)`
+
+Writes data on the current UDP or datagram unix domain socket object.
+
+In case of success, it returns true. Otherwise, it returns nil and a string
+describing the error.
+
+#### udpsock:sendto
+
+    `ok, err = udpsock:send(data, host, port)`
+    `ok, err = udpsock:send(data, "unix:/path/to/unix-domain.sock")`
