@@ -175,3 +175,14 @@ connect() call.
 
 #### udpsock:recv
   
+    `data, err = udpsock:recv(buffersize)`
+ 
+Receive up to buffersize bytes from UDP or datagram unix domain socket
+object.
+
+In case of success, it returns the data received; in case of error, it
+returns nil with a string describing the error.
+
+#### udpsock:recvfrom
+
+    `data, addr, err = udpsock:recvfrom(buffersize)`
