@@ -204,3 +204,16 @@ describing the error.
 
     `ok, err = udpsock:send(data, host, port)`
     `ok, err = udpsock:send(data, "unix:/path/to/unix-domain.sock")`
+   
+Writes data on the current UDP or datagram unix domain socket object to
+specified address.
+
+In case of success, it returns true. Otherwise, it returns nil and a string
+describing the error.
+
+#### udpsock:close
+  
+    `ok, err = udpsock:close()`
+
+Closes the current UDP or datagram unix domain socket. It returns the 1 in
+case of success and returns nil with a string describing the error otherwise.
