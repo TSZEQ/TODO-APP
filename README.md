@@ -217,3 +217,23 @@ describing the error.
 
 Closes the current UDP or datagram unix domain socket. It returns the 1 in
 case of success and returns nil with a string describing the error otherwise.
+
+#### udpsock:fileno
+
+    `fd = udpsock:fileno()`
+
+#### udpsock:settimeout
+
+    `udpsock:settimeout(timeout)`
+
+#### udpsock:gettimeout
+
+    `timeout = udpsock:gettimeout()`
+
+### Contants
+
+Module infos:
+    
+  * socket._VERSION
+
+OPT_* are tcpsock:setopt and tcpsock:getopt parameters:
