@@ -237,3 +237,19 @@ Module infos:
   * socket._VERSION
 
 OPT_* are tcpsock:setopt and tcpsock:getopt parameters:
+
+  * socket.OPT_TCP_NODELAY
+  * socket.OPT_TCP_KEEPALIVE
+  * socket.OPT_TCP_REUSEADDR
+
+SHUT_* are tcpsock:shutdown() parameters:
+
+  * socket.SHUT_RD
+  * socket.SHUT_WR
+  * socket.SHUT_RDWR
+
+ERROR_* are predefined error strings, which can be used to detect errors:
+
+  * socket.ERROR_TIMEOUT
+  * socket.ERROR_CLOSED
+  * socket.ERROR_REFUSED
