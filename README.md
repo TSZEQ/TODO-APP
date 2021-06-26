@@ -253,3 +253,11 @@ ERROR_* are predefined error strings, which can be used to detect errors:
   * socket.ERROR_TIMEOUT
   * socket.ERROR_CLOSED
   * socket.ERROR_REFUSED
+
+## References
+
+1. http://w3.impa.br/~diego/software/luasocket/reference.html
+2. http://golang.org/pkg/net/
+3. http://docs.python.org/py3k/library/socket.html
+4. http://www.lua.org/manual/5.2/
+5. https://github.com/fperrad/lua-TestMore.git
