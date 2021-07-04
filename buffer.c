@@ -1,4 +1,4 @@
 #include "buffer.h"
 
 /**
- * Create a
+ * Create a buffer of given size
