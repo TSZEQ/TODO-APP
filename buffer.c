@@ -3,4 +3,5 @@
 /**
  * Create a buffer of given size.
  */
-struct buf
+struct buffer *
+buffer_create(s
