@@ -4,4 +4,6 @@
  * Create a buffer of given size.
  */
 struct buffer *
-buffer_create(s
+buffer_create(size_t size)
+{
+ 
