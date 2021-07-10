@@ -6,4 +6,4 @@
 struct buffer *
 buffer_create(size_t size)
 {
-    struct buffer *buf =
+    struct buffer *buf = malloc(sizeof(*
