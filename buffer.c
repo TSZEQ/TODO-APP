@@ -10,4 +10,5 @@ buffer_create(size_t size)
     if (!buf)
         return NULL;
 
-    buf->start 
+    buf->start = malloc(size);
+    if (!buf
