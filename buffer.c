@@ -16,4 +16,4 @@ buffer_create(size_t size)
         return NULL;
     }
 
-    buf->pos = 
+    buf->pos = buf->start;
