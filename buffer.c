@@ -13,4 +13,7 @@ buffer_create(size_t size)
     buf->start = malloc(size);
     if (!buf->start) {
         free(buf);
-        ret
+        return NULL;
+    }
+
+  
