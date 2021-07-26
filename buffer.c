@@ -18,4 +18,6 @@ buffer_create(size_t size)
 
     buf->pos = buf->start;
     buf->last = buf->start;
-    buf->end = buf->sta
+    buf->end = buf->start + size;
+
+    retur
