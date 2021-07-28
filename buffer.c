@@ -20,4 +20,8 @@ buffer_create(size_t size)
     buf->last = buf->start;
     buf->end = buf->start + size;
 
-    retur
+    return buf;
+}
+
+/**
+ * Sh
