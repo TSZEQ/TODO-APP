@@ -24,4 +24,6 @@ buffer_create(size_t size)
 }
 
 /**
- * Sh
+ * Shrink the buffer.
+ *
+ * Mo
