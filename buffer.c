@@ -26,4 +26,4 @@ buffer_create(size_t size)
 /**
  * Shrink the buffer.
  *
- * Mo
+ * Move string to start
