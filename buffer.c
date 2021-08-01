@@ -27,4 +27,6 @@ buffer_create(size_t size)
  * Shrink the buffer.
  *
  * Move string to starting point of buffer.
- *
+ */
+void
+bu
