@@ -29,4 +29,5 @@ buffer_create(size_t size)
  * Move string to starting point of buffer.
  */
 void
-buffer_shrink(str
+buffer_shrink(struct buffer *buf)
+{
