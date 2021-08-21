@@ -31,4 +31,4 @@ buffer_create(size_t size)
 void
 buffer_shrink(struct buffer *buf)
 {
-    memmove(buf->start, buf->pos, bu
+    memmove(buf->start, buf->pos, buf->last - buf->pos);
