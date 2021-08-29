@@ -33,4 +33,4 @@ buffer_shrink(struct buffer *buf)
 {
     memmove(buf->start, buf->pos, buf->last - buf->pos);
     buf->last = buf->start + (buf->last - buf->pos);
-  
+    buf->pos = b
