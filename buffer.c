@@ -37,4 +37,6 @@ buffer_shrink(struct buffer *buf)
 }
 
 /**
- * Grow buffer e
+ * Grow buffer extra size.
+ */
+in
