@@ -36,4 +36,5 @@ buffer_shrink(struct buffer *buf)
     buf->pos = buf->start;
 }
 
-/*
+/**
+ * Grow buffer e
