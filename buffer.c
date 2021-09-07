@@ -40,4 +40,4 @@ buffer_shrink(struct buffer *buf)
  * Grow buffer extra size.
  */
 int
-buffer_g
+buffer_grow(struct buffer *buf
