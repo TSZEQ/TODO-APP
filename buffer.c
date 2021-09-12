@@ -42,4 +42,5 @@ buffer_shrink(struct buffer *buf)
 int
 buffer_grow(struct buffer *buf, size_t extra)
 {
-    if (extr
+    if (extra <= 0)
+        ret
