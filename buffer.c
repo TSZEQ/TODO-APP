@@ -43,4 +43,6 @@ int
 buffer_grow(struct buffer *buf, size_t extra)
 {
     if (extra <= 0)
-        ret
+        return 0;
+
+    size_
