@@ -45,4 +45,4 @@ buffer_grow(struct buffer *buf, size_t extra)
     if (extra <= 0)
         return 0;
 
-    size_
+    size_t size = buffe
