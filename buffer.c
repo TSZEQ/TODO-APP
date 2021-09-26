@@ -48,4 +48,5 @@ buffer_grow(struct buffer *buf, size_t extra)
     size_t size = buffer_capacity(buf) + extra;
 
     size_t pos_off = buf->pos - buf->start;
-    size_t last_off = buf->last 
+    size_t last_off = buf->last - buf->start;
+        
