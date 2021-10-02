@@ -52,4 +52,6 @@ buffer_grow(struct buffer *buf, size_t extra)
         
     buf->start = realloc(buf->start, size);
     if (buf->start == NULL)
+        return -1;
+
   
