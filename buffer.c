@@ -54,4 +54,4 @@ buffer_grow(struct buffer *buf, size_t extra)
     if (buf->start == NULL)
         return -1;
 
-    buf->pos 
+    buf->pos = buf->start + po
