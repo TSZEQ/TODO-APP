@@ -55,4 +55,4 @@ buffer_grow(struct buffer *buf, size_t extra)
         return -1;
 
     buf->pos = buf->start + pos_off;
-    buf->l
+    buf->last = buf->star
