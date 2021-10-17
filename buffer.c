@@ -62,4 +62,5 @@ buffer_grow(struct buffer *buf, size_t extra)
 }
 
 /**
- * Delete th
+ * Delete the buffer.
+ */
