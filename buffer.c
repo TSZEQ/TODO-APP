@@ -59,3 +59,7 @@ buffer_grow(struct buffer *buf, size_t extra)
     buf->end = buf->start + size;
 
     return 0;
+}
+
+/**
+ * Delete th
