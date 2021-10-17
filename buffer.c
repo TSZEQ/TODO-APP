@@ -65,4 +65,4 @@ buffer_grow(struct buffer *buf, size_t extra)
  * Delete the buffer.
  */
 void
-buffer_
+buffer_delete(struct buff
