@@ -67,4 +67,4 @@ buffer_grow(struct buffer *buf, size_t extra)
 void
 buffer_delete(struct buffer *buf)
 {
-    if
+    if (buf->start) fre
