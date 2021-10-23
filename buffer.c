@@ -68,4 +68,6 @@ void
 buffer_delete(struct buffer *buf)
 {
     if (buf->start) free(buf->start);
-    buf->start = NULL
+    buf->start = NULL;
+    free(buf);
+}
