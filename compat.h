@@ -1,1 +1,2 @@
-#ifndef COM
+#ifndef COMPAT_H
+#defin
