@@ -1,4 +1,4 @@
 #ifndef COMPAT_H
 #define COMPAT_H
 
-#if def
+#if defined(__linux__)
