@@ -2,3 +2,4 @@
 #define COMPAT_H
 
 #if defined(__linux__)
+#define _GNU_S
