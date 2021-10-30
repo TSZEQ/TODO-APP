@@ -1,2 +1,4 @@
 #ifndef COMPAT_H
-#defin
+#define COMPAT_H
+
+#if def
