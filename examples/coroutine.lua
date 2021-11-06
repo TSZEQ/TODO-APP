@@ -28,3 +28,22 @@ function worker(sock, path)
         data = partial
       end
     end
+    if contents[path] == nil then
+      contents[path] = data
+    else
+      contents[path] = contents[path] .. data
+    end
+    if err then
+      break
+    end
+    coroutine.yield(true)
+  end
+  coroutine.yield(nil)
+end
+
+if arg[1] == "sequence" then
+  print("sequence...")
+  for i, path in ipairs(paths) do
+    local sock = socket.tcp()
+    local ok, err = sock:connect('www.verycd.com', 80)
+    if err then
