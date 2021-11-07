@@ -65,3 +65,18 @@ if arg[1] == "sequence" then
       if contents[path] == nil then
         contents[path] = data
       else
+        contents[path] = contents[path] .. data
+      end
+      if err then
+        break
+      end
+    end
+  end
+else
+  print("selecting...")
+  local threads = {}
+
+  for i, path in ipairs(paths) do
+    local sock = socket.tcp()
+    local thread = coroutine.create(function () worker(sock, path) end)
+    coroutine.resume(thread) -- initialize
