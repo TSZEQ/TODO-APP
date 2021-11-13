@@ -80,3 +80,18 @@ else
     local sock = socket.tcp()
     local thread = coroutine.create(function () worker(sock, path) end)
     coroutine.resume(thread) -- initialize
+    threads[sock:fileno()] = thread
+  end
+
+  while true do
+    local fds = {}
+    for fd, _ in pairs(threads) do
+      table.insert(fds, fd)
+    end
+
+    if 0 == #fds then
+      -- no more to do
+      break
+    end
+
+    local readfds, writefds, err = socket.select(fds, fds)
