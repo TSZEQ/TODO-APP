@@ -95,3 +95,21 @@ else
     end
 
     local readfds, writefds, err = socket.select(fds, fds)
+
+    if err then
+      print(err)
+      os.exit()
+    elseif readfds then
+      for _, fd in ipairs(readfds) do
+        local status, result = coroutine.resume(threads[fd])
+        if result == nil then
+          threads[fd] = nil
+        end
+      end
+    end
+  end
+end
+
+for _, path in ipairs(paths) do
+  print(path, #contents[path])
+end
