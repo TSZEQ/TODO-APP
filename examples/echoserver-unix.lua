@@ -1,1 +1,2 @@
-#!/usr/b
+#!/usr/bin/env lua
+local 
