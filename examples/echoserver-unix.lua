@@ -2,4 +2,4 @@
 local socket = require "ssocket"
 
 SOCK_PATH = '/tmp/test.sock'
-tcpsock
+tcpsock = socket.tc
