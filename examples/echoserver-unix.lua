@@ -2,4 +2,5 @@
 local socket = require "ssocket"
 
 SOCK_PATH = '/tmp/test.sock'
-tcpsock = socket.tc
+tcpsock = socket.tcp()
+os.remo
