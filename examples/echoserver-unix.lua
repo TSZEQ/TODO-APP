@@ -9,4 +9,6 @@ if err then
   print(err)
   os.exit()
 end
-tcpsock:liste
+tcpsock:listen(5)
+
+addr, err = tcpsoc
