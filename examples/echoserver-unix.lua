@@ -11,4 +11,5 @@ if err then
 end
 tcpsock:listen(5)
 
-addr, err = tcpsoc
+addr, err = tcpsock:getsockname()
+print(string.fo
