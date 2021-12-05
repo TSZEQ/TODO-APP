@@ -7,4 +7,5 @@ os.remove(SOCK_PATH)
 local ok, err = tcpsock:bind(SOCK_PATH)
 if err then
   print(err)
-  
+  os.exit()
+en
