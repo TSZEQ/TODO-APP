@@ -12,4 +12,4 @@ end
 tcpsock:listen(5)
 
 addr, err = tcpsock:getsockname()
-print(string.fo
+print(string.format("Listening on %s.
