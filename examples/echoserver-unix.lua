@@ -13,4 +13,6 @@ tcpsock:listen(5)
 
 addr, err = tcpsock:getsockname()
 print(string.format("Listening on %s...", addr))
-print(string.format("You can use this command to connect on: socat - UNIX-CONNECT:%s", SOCK_PAT
+print(string.format("You can use this command to connect on: socat - UNIX-CONNECT:%s", SOCK_PATH))
+print("")
+whi
