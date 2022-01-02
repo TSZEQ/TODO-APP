@@ -16,4 +16,4 @@ print(string.format("Listening on %s...", addr))
 print(string.format("You can use this command to connect on: socat - UNIX-CONNECT:%s", SOCK_PATH))
 print("")
 while true do
-  conn, err = 
+  conn, err = tcpsock:accept()
