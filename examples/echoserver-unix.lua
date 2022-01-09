@@ -17,4 +17,5 @@ print(string.format("You can use this command to connect on: socat - UNIX-CONNEC
 print("")
 while true do
   conn, err = tcpsock:accept()
-  addr, err = conn:getpeernam
+  addr, err = conn:getpeername()
+  if type(addr) =
