@@ -20,4 +20,5 @@ while true do
   addr, err = conn:getpeername()
   if type(addr) == "string" then
     print(string.format("[%d] Connected from %s.", conn:fileno(), addr))
-  els
+  else
+    print(strin
