@@ -21,4 +21,4 @@ while true do
   if type(addr) == "string" then
     print(string.format("[%d] Connected from %s.", conn:fileno(), addr))
   else
-    print(strin
+    print(string.format("[%d] C
