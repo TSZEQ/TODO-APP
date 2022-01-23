@@ -22,4 +22,6 @@ while true do
     print(string.format("[%d] Connected from %s.", conn:fileno(), addr))
   else
     print(string.format("[%d] Connected from %s:%d.", conn:fileno(), addr[1], addr[2]))
- 
+  end
+  if err then
+  
