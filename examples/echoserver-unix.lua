@@ -25,4 +25,6 @@ while true do
   end
   if err then
     print(err)
-    o
+    os.exit()
+  else
+    r
