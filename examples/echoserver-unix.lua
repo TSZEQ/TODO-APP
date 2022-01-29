@@ -27,4 +27,5 @@ while true do
     print(err)
     os.exit()
   else
-    reader, err = conn:rea
+    reader, err = conn:readuntil("\n")
+    i
