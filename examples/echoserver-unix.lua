@@ -29,4 +29,6 @@ while true do
   else
     reader, err = conn:readuntil("\n")
     if err then
-      print(er
+      print(err)
+    else
+      
