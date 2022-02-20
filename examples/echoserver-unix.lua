@@ -33,4 +33,5 @@ while true do
     else
       while true do
         local data, err, partial = reader()
-        i
+        if err then
+  
