@@ -35,4 +35,5 @@ while true do
         local data, err, partial = reader()
         if err then
           if err == socket.ERROR_CLOSED then
-            print(string.format("[%d] Connection closed, exit.", conn:fileno(
+            print(string.format("[%d] Connection closed, exit.", conn:fileno()))
+         
