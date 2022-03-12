@@ -37,4 +37,5 @@ while true do
           if err == socket.ERROR_CLOSED then
             print(string.format("[%d] Connection closed, exit.", conn:fileno()))
           end
-        
+          break
+     
