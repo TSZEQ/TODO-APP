@@ -39,4 +39,4 @@ while true do
           end
           break
         end
-       
+        if partial t
