@@ -42,4 +42,4 @@ while true do
         if partial then
           data = partial
         end
-        
+        print(string.f
