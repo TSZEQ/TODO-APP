@@ -1,4 +1,5 @@
 #!/usr/bin/env lua
 local socket = require "ssocket"
 
-HOST = '
+HOST = '127.0.0.1'
+PORT = 1234
