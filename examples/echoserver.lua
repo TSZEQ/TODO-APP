@@ -1,2 +1,4 @@
 #!/usr/bin/env lua
-local socket = require
+local socket = require "ssocket"
+
+HOST = '
