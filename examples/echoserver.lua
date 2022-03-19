@@ -2,4 +2,5 @@
 local socket = require "ssocket"
 
 HOST = '127.0.0.1'
-PORT = 1234
+PORT = 12345
+tcpsock = socket.tc
