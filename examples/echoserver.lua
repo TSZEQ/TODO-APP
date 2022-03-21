@@ -4,4 +4,5 @@ local socket = require "ssocket"
 HOST = '127.0.0.1'
 PORT = 12345
 tcpsock = socket.tcp()
-local ok, err = tcpsock:bi
+local ok, err = tcpsock:bind(HOST, PORT)
+i
