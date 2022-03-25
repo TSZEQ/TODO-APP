@@ -9,4 +9,4 @@ if err then
   print(err)
   os.exit()
 end
-tc
+tcpsock:list
