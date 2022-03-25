@@ -7,4 +7,4 @@ tcpsock = socket.tcp()
 local ok, err = tcpsock:bind(HOST, PORT)
 if err then
   print(err)
-  
+  os.exit
