@@ -6,3 +6,5 @@ PORT = 12345
 tcpsock = socket.tcp()
 local ok, err = tcpsock:bind(HOST, PORT)
 if err then
+  print(err)
+  
