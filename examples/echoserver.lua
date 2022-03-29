@@ -17,4 +17,4 @@ print(string.format("You can use this command to connect on: telnet %s %d", addr
 print("")
 
 while true do
-  con
+  conn, err
