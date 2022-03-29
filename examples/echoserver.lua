@@ -16,4 +16,5 @@ print(string.format("Listening on %s:%d...", addr[1], addr[2]))
 print(string.format("You can use this command to connect on: telnet %s %d", addr[1], addr[2]))
 print("")
 
-while
+while true do
+  con
