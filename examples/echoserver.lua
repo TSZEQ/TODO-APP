@@ -18,4 +18,5 @@ print("")
 
 while true do
   conn, err = tcpsock:accept()
-  addr, err = conn:ge
+  addr, err = conn:getpeername()
+  pr
