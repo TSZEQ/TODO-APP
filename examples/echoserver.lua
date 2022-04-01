@@ -21,4 +21,5 @@ while true do
   addr, err = conn:getpeername()
   print(string.format("[%d] Connected from %s:%d.", conn:fileno(), addr[1], addr[2]))
   if err then
-    print(e
+    print(err)
+    os.exit()
