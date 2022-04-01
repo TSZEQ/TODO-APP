@@ -24,4 +24,4 @@ while true do
     print(err)
     os.exit()
   else
-    rea
+    reader, err = conn:readu
