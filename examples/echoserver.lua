@@ -29,4 +29,5 @@ while true do
       print(err)
     else
       while true do
-        local data, err, parti
+        local data, err, partial = reader()
+     
