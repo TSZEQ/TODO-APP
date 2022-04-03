@@ -25,4 +25,5 @@ while true do
     os.exit()
   else
     reader, err = conn:readuntil("\n")
-    if e
+    if err then
+      
