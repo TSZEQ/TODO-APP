@@ -29,4 +29,4 @@ while true do
       print(err)
     else
       while true do
-        local
+        local data, err, parti
