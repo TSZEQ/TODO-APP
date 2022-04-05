@@ -36,4 +36,5 @@ while true do
           end
           break
         end
-        i
+        if partial then
+      
