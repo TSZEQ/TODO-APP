@@ -32,3 +32,4 @@ while true do
         local data, err, partial = reader()
         if err then
           if err == socket.ERROR_CLOSED then
+            
