@@ -37,4 +37,5 @@ while true do
           break
         end
         if partial then
-          data
+          data = partial
+      
