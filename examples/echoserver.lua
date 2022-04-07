@@ -39,4 +39,4 @@ while true do
         if partial then
           data = partial
         end
-        print(string.form
+        print(string.format("[%d] %s",
