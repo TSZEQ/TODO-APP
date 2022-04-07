@@ -39,4 +39,4 @@ while true do
         if partial then
           data = partial
         end
-        pr
+        print(string.form
