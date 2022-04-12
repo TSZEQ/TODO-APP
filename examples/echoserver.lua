@@ -40,4 +40,7 @@ while true do
           data = partial
         end
         print(string.format("[%d] %s", conn:fileno(), data))
-      en
+      end
+    end
+  end
+en
