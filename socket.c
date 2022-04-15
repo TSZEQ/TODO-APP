@@ -32,3 +32,26 @@
 
 /* Socket address */
 typedef union {
+  struct sockaddr sa;
+  struct sockaddr_in in;
+  struct sockaddr_un un;
+} sockaddr_t;
+
+/* Convert "sockaddr_t" to "struct sockaddr *". */
+#define SAS2SA(x) (&((x)->sa))
+
+/* Socket Object */
+struct sockobj {
+    int fd;
+    int sock_family;
+    double sock_timeout;        /* in seconds */
+    struct buffer *buf;         /* used for buffer reading */
+};
+
+#define getsockobj(L) ((struct sockobj *)lua_touserdata(L, 1));
+#define CHECK_ERRNO(expected)   (errno == expected)
+
+/* Custom socket error strings */
+#define ERROR_TIMEOUT   "Operation timed out"
+#define ERROR_CLOSED    "Connection closed"
+#define ERROR_REFUSED   "Connection refused"
