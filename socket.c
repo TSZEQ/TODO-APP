@@ -66,3 +66,21 @@ struct sockobj {
 /**
  * Function to perform the setting of socket blocking mode.
  */
+static void
+__setblocking(int fd, int block)
+{
+    int flags = fcntl(fd, F_GETFL, 0);
+    if (block) {
+        flags &= (~O_NONBLOCK);
+    } else {
+        flags |= O_NONBLOCK;
+    }
+    fcntl(fd, F_SETFL, flags);
+}
+
+/**
+ * Do a event polling on the socket, if necessary (sock_timeout > 0).
+ *
+ * Returns:
+ *  1   on timeout
+ *  -1  on error
