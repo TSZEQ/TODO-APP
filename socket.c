@@ -84,3 +84,16 @@ __setblocking(int fd, int block)
  * Returns:
  *  1   on timeout
  *  -1  on error
+ *  0   success
+ */
+#define EVENT_NONE      0
+#define EVENT_READABLE  POLLIN
+#define EVENT_WRITABLE  POLLOUT
+#define EVENT_ANY       (POLLIN | POLLOUT)
+static int
+__waitfd(struct sockobj *s, int event, struct timeout *tm)
+{
+    int ret;
+
+    // Nothing to do if socket is closed.
+    if (s->fd < 0)
