@@ -157,3 +157,19 @@ __getsockaddrlen(struct sockobj *s, socklen_t * len_ret)
     case AF_INET6:
         *len_ret = sizeof(struct sockaddr_in6);
         return 1;
+    default:
+        return 0;
+    }
+}
+
+/* 
+ * Convert a string specifying a host name or one of a few symbolic names to a
+ * numeric IP address.
+ */
+static int
+__sockobj_setipaddr(lua_State *L, const char *name, struct sockaddr *addr_ret, size_t addr_ret_size, int af)
+{
+    struct addrinfo hints, *res;
+    int err;
+    int d1, d2, d3, d4;
+    char ch;
