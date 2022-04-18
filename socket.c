@@ -205,3 +205,16 @@ __sockobj_setipaddr(lua_State *L, const char *name, struct sockaddr *addr_ret, s
 /**
  * Parse socket address arguments.
  *
+ * Socket addresses are represented as follows:
+
+ *  - A single string is used for the AF_UNIX address family.
+ *  - Two arguments (host, port) is used for the AF_INET address family,
+ *    where host is a string representing either a hostname in Internet Domain
+ *    Notation like 'www.example.com' or an IPv4 address like '8.8.8.8', and port
+ *    is an number.
+
+ * If you use a hostname in the host portion of IPv4/IPv6 socket address, the
+ * program may show a nondeterministic behavior, as we use the first address
+ * returned from the DNS resolution. The socket address will be resolved
+ * differently into an actual IPv4/v6 address, depending on the results from DNS
+ * resolution and/or the host configuration. For deterministic behavior use a
