@@ -173,3 +173,16 @@ __sockobj_setipaddr(lua_State *L, const char *name, struct sockaddr *addr_ret, s
     int err;
     int d1, d2, d3, d4;
     char ch;
+    memset((void *)addr_ret, 0, addr_ret_size);
+    
+    if (sscanf(name, "%d.%d.%d.%d%c", &d1, &d2, &d3, &d4, &ch) == 4
+        && 0 <= d1 && d1 <= 255
+        && 0 <= d2 && d2 <= 255
+        && 0 <= d3 && d3 <= 255
+        && 0 <= d4 && d4 <= 255) {
+        struct sockaddr_in *sin;
+        sin = (struct sockaddr_in *)addr_ret;
+        sin->sin_addr.s_addr = htonl(((long)d1 << 24) | ((long)d2 << 16) | ((long)d3 << 8) | ((long)d4 << 0));
+        sin->sin_family = AF_INET;
+        return 0;
+    }
