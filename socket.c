@@ -97,3 +97,16 @@ __waitfd(struct sockobj *s, int event, struct timeout *tm)
 
     // Nothing to do if socket is closed.
     if (s->fd < 0)
+        return 0;
+
+    struct pollfd pollfd;
+    pollfd.fd = s->fd;
+    pollfd.events = event;
+
+    do {
+        // Handling this condition here simplifies the loops.
+        double left = timeout_left(tm);
+        if (left == 0.0)
+            return 1;
+        int timeout = (int)(left * 1e3);
+        ret = poll(&pollfd, 1, timeout >= 0 ? timeout : -1);
