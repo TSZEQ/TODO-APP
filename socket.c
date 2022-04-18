@@ -142,3 +142,18 @@ __select(int nfds, fd_set * readfds, fd_set * writefds, fd_set * errorfds,
 /**
  * Get the address length according to the socket object's address family.
  * Return 1 if the family is known, 0 otherwise. The length is returned through
+ * len_ret.
+ */
+static int
+__getsockaddrlen(struct sockobj *s, socklen_t * len_ret)
+{
+    switch (s->sock_family) {
+    case AF_UNIX:
+        *len_ret = sizeof(struct sockaddr_un);
+        return 1;
+    case AF_INET:
+        *len_ret = sizeof(struct sockaddr_in);
+        return 1;
+    case AF_INET6:
+        *len_ret = sizeof(struct sockaddr_in6);
+        return 1;
