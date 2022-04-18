@@ -186,3 +186,22 @@ __sockobj_setipaddr(lua_State *L, const char *name, struct sockaddr *addr_ret, s
         sin->sin_family = AF_INET;
         return 0;
     }
+
+    memset(&hints, 0, sizeof(hints));
+    hints.ai_family = af;
+    err = getaddrinfo(name, NULL, &hints, &res);
+    if (err) {
+        lua_pushnil(L);
+        lua_pushstring(L, gai_strerror(errno));
+        return -1;
+    }
+    if (res->ai_addrlen < addr_ret_size)
+        addr_ret_size = res->ai_addrlen;
+    memcpy((char *)addr_ret, res->ai_addr, addr_ret_size);
+    freeaddrinfo(res);
+    return 0;
+}
+
+/**
+ * Parse socket address arguments.
+ *
