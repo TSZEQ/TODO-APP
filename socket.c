@@ -130,3 +130,15 @@ __select(int nfds, fd_set * readfds, fd_set * writefds, fd_set * errorfds,
         struct timeval tv = { 0, 0 };
         double t = timeout_left(tm);
         if (t >= 0) {
+            tv.tv_sec = (int)t;
+            tv.tv_usec = (int)((t - tv.tv_sec) * 1.0e6);
+        }
+
+        ret = select(nfds, readfds, writefds, errorfds, (t >= 0) ? &tv : NULL);
+    } while (ret < 0 && errno == EINTR);
+    return ret;
+}
+
+/**
+ * Get the address length according to the socket object's address family.
+ * Return 1 if the family is known, 0 otherwise. The length is returned through
