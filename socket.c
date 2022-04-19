@@ -218,3 +218,21 @@ __sockobj_setipaddr(lua_State *L, const char *name, struct sockaddr *addr_ret, s
  * returned from the DNS resolution. The socket address will be resolved
  * differently into an actual IPv4/v6 address, depending on the results from DNS
  * resolution and/or the host configuration. For deterministic behavior use a
+ * numeric address in host portion.
+ *
+ * This method assumed that address arguments start after offset index.
+ *
+ * Returns 0 on success, -1 on failure.
+ */
+static int
+__sockobj_getaddrfromarg(lua_State * L, struct sockobj *s, struct sockaddr *addr_ret,
+                     socklen_t * len_ret, int offset)
+{
+    int n;
+    n = lua_gettop(L);
+    if (n != 1 + offset && n != 2 + offset) {
+        lua_pushnil(L);
+        lua_pushfstring(L, "expecting %d or %d arguments"
+        " (including the object itself), but seen %d", offset + 1, offset + 2, n);
+        return -1;
+    }
