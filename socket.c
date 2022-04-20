@@ -236,3 +236,14 @@ __sockobj_getaddrfromarg(lua_State * L, struct sockobj *s, struct sockaddr *addr
         " (including the object itself), but seen %d", offset + 1, offset + 2, n);
         return -1;
     }
+
+    if (n == 2 + offset) {
+        s->sock_family = AF_INET;
+    } else if (n == 1 + offset) {
+        s->sock_family = AF_UNIX;
+    }
+    if (s->sock_family == AF_INET) {
+        struct sockaddr_in *addr = (struct sockaddr_in *)addr_ret;
+        const char *host;
+        int port;
+        host = luaL_checkstring(L, 1 + offset);
