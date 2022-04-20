@@ -292,3 +292,25 @@ __sockobj_makeaddr(lua_State * L, struct sockobj *s, struct sockaddr *addr,
             if (err) {
                 err = errno;
                 lua_pushnil(L);
+                lua_pushstring(L, gai_strerror(errno));
+                return -1;
+            }
+            lua_pushnumber(L, 1);
+            lua_pushstring(L, buf);
+            lua_settable(L, -3);
+            lua_pushnumber(L, 2);
+            lua_pushnumber(L, ntohs(a->sin_port));
+            lua_settable(L, -3);
+            return 0;
+        }
+    case AF_UNIX:
+        {
+            struct sockaddr_un *a = (struct sockaddr_un *)addr;
+#ifdef linux
+            if (a->sun_path[0] == 0) { /* Linux abstract namespace */
+                addrlen -= offset(struct sockaddr_un, sun_path);
+                lua_pushlstring(L, a->sun_path, addrlen);
+            } else
+#endif
+            {
+                /* regular NULL-terminated string */
