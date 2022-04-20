@@ -247,3 +247,26 @@ __sockobj_getaddrfromarg(lua_State * L, struct sockobj *s, struct sockaddr *addr
         const char *host;
         int port;
         host = luaL_checkstring(L, 1 + offset);
+        port = luaL_checknumber(L, 2 + offset);
+        if (__sockobj_setipaddr(L, host, (struct sockaddr *)addr, sizeof(*addr), AF_INET) != 0) {
+            return -1;
+        }
+        addr->sin_family = AF_INET;
+        addr->sin_port = htons(port);
+        *len_ret = sizeof(*addr);
+    } else if (s->sock_family == AF_UNIX) {
+        struct sockaddr_un *addr = (struct sockaddr_un *)addr_ret;
+        const char *path = luaL_checkstring(L, 1 + offset);
+        addr->sun_family = AF_UNIX;
+        strncpy(addr->sun_path, path, sizeof(addr->sun_path) - 1);
+        *len_ret = sizeof(*addr);
+    } else {
+        assert(0);
+    }
+    return 0;
+}
+
+/**
+ * Create a table, push address info into it.
+ *
+ * The family field os the socket object is inspected to determine what kind of
