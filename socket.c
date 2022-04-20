@@ -279,3 +279,16 @@ __sockobj_getaddrfromarg(lua_State * L, struct sockobj *s, struct sockaddr *addr
 static int
 __sockobj_makeaddr(lua_State * L, struct sockobj *s, struct sockaddr *addr,
                socklen_t addrlen)
+{
+    lua_newtable(L);
+
+    switch (addr->sa_family) {
+    case AF_INET:
+        {
+            struct sockaddr_in *a = (struct sockaddr_in *)addr;
+            char buf[NI_MAXHOST];
+            int err = getnameinfo(addr, addrlen, buf, sizeof(buf), NULL, 0,
+                                  NI_NUMERICHOST);
+            if (err) {
+                err = errno;
+                lua_pushnil(L);
