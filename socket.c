@@ -314,3 +314,15 @@ __sockobj_makeaddr(lua_State * L, struct sockobj *s, struct sockaddr *addr,
 #endif
             {
                 /* regular NULL-terminated string */
+                lua_pushstring(L, a->sun_path);
+            }
+            return 0;
+        }
+    default:
+        /* If we don't know the address family, return it as an {int, bytes}
+         * table. */
+        lua_pushnumber(L, 1);
+        lua_pushnumber(L, addr->sa_family);
+        lua_settable(L, -3);
+        lua_pushnumber(L, 2);
+        lua_pushstring(L, addr->sa_data);
