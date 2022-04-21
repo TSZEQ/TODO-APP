@@ -363,3 +363,19 @@ __sockobj_createsocket(lua_State *L, struct sockobj *s, int type)
         lua_pushnil(L);
         lua_pushfstring(L, "failed to create socket: %s", strerror(errno));
         return -1;
+    }
+    s->fd = fd;
+
+    // 100% non-blocking
+    __setblocking(s->fd, 0);
+
+    return 0;
+}
+
+/**
+ * Close associated socket and buffers.
+ */
+static int
+__sockobj_close(lua_State *L, struct sockobj *s)
+{
+    if (s->fd != -1) {
