@@ -326,3 +326,21 @@ __sockobj_makeaddr(lua_State * L, struct sockobj *s, struct sockaddr *addr,
         lua_settable(L, -3);
         lua_pushnumber(L, 2);
         lua_pushstring(L, addr->sa_data);
+        lua_settable(L, -3);
+        return 0;
+    }
+}
+
+/**
+ * Generic socket object creation.
+ */
+struct sockobj *
+__sockobj_create(lua_State *L, const char *tname)
+{
+    struct sockobj *s =
+        (struct sockobj *)lua_newuserdata(L, sizeof(struct sockobj));
+    if (!s) {
+        return NULL;
+    }
+    s->fd = -1;
+    s->sock_timeout = -1;
