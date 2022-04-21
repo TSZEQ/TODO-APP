@@ -344,3 +344,22 @@ __sockobj_create(lua_State *L, const char *tname)
     }
     s->fd = -1;
     s->sock_timeout = -1;
+    s->sock_family = 0;
+    s->buf = NULL;
+    luaL_setmetatable(L, tname);
+    return s;
+}
+
+/**
+ * Generic socket fd creation.
+ */
+static int
+__sockobj_createsocket(lua_State *L, struct sockobj *s, int type)
+{
+    int fd;
+    assert(s->fd == -1);
+
+    if ((fd = socket(s->sock_family, type, 0)) == -1) {
+        lua_pushnil(L);
+        lua_pushfstring(L, "failed to create socket: %s", strerror(errno));
+        return -1;
