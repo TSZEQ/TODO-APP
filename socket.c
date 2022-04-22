@@ -394,3 +394,15 @@ __sockobj_close(lua_State *L, struct sockobj *s)
 }
 
 /**
+ * Generic socket connection.
+ */
+static int
+__sockobj_connect(lua_State *L, struct sockobj *s, struct sockaddr *addr, socklen_t len)
+{
+    int ret;
+    char *errstr = NULL;
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+    assert(s->fd > 0);
+
+    errno = 0;
