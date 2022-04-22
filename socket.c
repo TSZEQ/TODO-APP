@@ -379,3 +379,18 @@ static int
 __sockobj_close(lua_State *L, struct sockobj *s)
 {
     if (s->fd != -1) {
+        if (close(s->fd) != 0) {
+            lua_pushnil(L);
+            lua_pushstring(L, strerror(errno));
+            return -1;
+        }
+        s->fd = -1;
+    }
+    if (s->buf) {
+        buffer_delete(s->buf);
+        s->buf = NULL;
+    }
+    return 0;
+}
+
+/**
