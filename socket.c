@@ -433,3 +433,19 @@ __sockobj_connect(lua_State *L, struct sockobj *s, struct sockaddr *addr, sockle
     }
 
     if (errno) {
+        errstr = strerror(errno);
+        goto err;
+    }
+    return 0;
+
+err:
+    assert(errstr);
+    __sockobj_close(L, s);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return -1;
+}
+
+static int
+__sockobj_send(lua_State *L, struct sockobj *s, const char *buf, size_t len, size_t *sent, struct timeout *tm) {
+    char *errstr;
