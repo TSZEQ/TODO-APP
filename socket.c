@@ -406,3 +406,17 @@ __sockobj_connect(lua_State *L, struct sockobj *s, struct sockaddr *addr, sockle
     assert(s->fd > 0);
 
     errno = 0;
+    ret = connect(s->fd, addr, len);
+
+    if (CHECK_ERRNO(EINPROGRESS)) {
+        /* Connecting in progress with timeout, wait until we have the result of
+         * the connection attempt or timeout.
+         */
+        int timeout = __waitfd(s, EVENT_WRITABLE, &tm);
+        if (timeout == 1) {
+            errstr = ERROR_TIMEOUT;
+            goto err;
+        } else if (timeout == 0) {
+            // In case of EINPROGRESS, use getsockopt(SO_ERROR) to get the real
+            // error, when the connection attempt finished.
+            socklen_t ret_size = sizeof(ret);
