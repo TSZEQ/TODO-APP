@@ -582,3 +582,20 @@ __sockobj_write(lua_State *L, struct sockobj *s, const char *buf, size_t len) {
     assert(total_sent == len);
     lua_pushinteger(L, total_sent);
     return 0;
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return -1;
+}
+
+static int
+__sockobj_recv(lua_State *L, struct sockobj *s, char *buf, size_t buffersize, size_t *received, struct timeout *tm)
+{
+    char *errstr = NULL;
+
+    if (s->fd == -1) {
+        errstr = ERROR_CLOSED;
+        goto err;
+    }
