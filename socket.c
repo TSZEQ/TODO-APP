@@ -463,3 +463,23 @@ __sockobj_send(lua_State *L, struct sockobj *s, const char *buf, size_t len, siz
             errstr = ERROR_TIMEOUT;
             goto err;
         } else {
+            int n = send(s->fd, buf, len, 0);
+            if (n < 0) {
+                switch (errno) {
+                case EINTR:
+                case EAGAIN:
+                    continue;
+                case EPIPE:
+                    // EPIPE means the connection was closed.
+                    errstr = ERROR_CLOSED;
+                    goto err;
+                default:
+                    errstr = strerror(errno);
+                    goto err;
+                }
+            } else {
+                *sent = n;
+                return 0;
+            }
+        }
+    }
