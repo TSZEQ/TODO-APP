@@ -561,3 +561,24 @@ __sockobj_write(lua_State *L, struct sockobj *s, const char *buf, size_t len) {
                 switch (errno) {
                 case EINTR:
                 case EAGAIN:
+                    continue;
+                case EPIPE:
+                    // EPIPE means the connection was closed.
+                    errstr = ERROR_CLOSED;
+                    goto err;
+                default:
+                    errstr = strerror(errno);
+                    goto err;
+                }
+            } else {
+                total_sent += n;
+                if (len - total_sent <= 0) {
+                    break;
+                }
+            }
+        }
+    }
+
+    assert(total_sent == len);
+    lua_pushinteger(L, total_sent);
+    return 0;
