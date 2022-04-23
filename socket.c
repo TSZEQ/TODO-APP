@@ -498,3 +498,23 @@ __sockobj_sendto(lua_State *L, struct sockobj *s, const char *buf, size_t len, s
         errstr = ERROR_CLOSED;
         goto err;
     }
+
+    while (1) {
+        int timeout = __waitfd(s, EVENT_WRITABLE, tm);
+        if (timeout == -1) {
+            errstr = strerror(errno);
+            goto err;
+        } else if (timeout == 1) {
+            errstr = ERROR_TIMEOUT;
+            goto err;
+        } else {
+            int n = sendto(s->fd, buf, len, 0, addr, addrlen);
+            if (n < 0) {
+                switch (errno) {
+                case EINTR:
+                case EAGAIN:
+                    continue;
+                case EPIPE:
+                    // EPIPE means the connection was closed.
+                    errstr = ERROR_CLOSED;
+                    goto err;
