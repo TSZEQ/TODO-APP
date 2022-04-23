@@ -483,3 +483,18 @@ __sockobj_send(lua_State *L, struct sockobj *s, const char *buf, size_t len, siz
             }
         }
     }
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return -1;
+}
+
+static int
+__sockobj_sendto(lua_State *L, struct sockobj *s, const char *buf, size_t len, size_t *sent, struct sockaddr *addr, socklen_t addrlen, struct timeout *tm) {
+    char *errstr;
+    if (s->fd == -1) {
+        errstr = ERROR_CLOSED;
+        goto err;
+    }
