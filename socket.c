@@ -449,3 +449,17 @@ err:
 static int
 __sockobj_send(lua_State *L, struct sockobj *s, const char *buf, size_t len, size_t *sent, struct timeout *tm) {
     char *errstr;
+    if (s->fd == -1) {
+        errstr = ERROR_CLOSED;
+        goto err;
+    }
+
+    while (1) {
+        int timeout = __waitfd(s, EVENT_WRITABLE, tm);
+        if (timeout == -1) {
+            errstr = strerror(errno);
+            goto err;
+        } else if (timeout == 1) {
+            errstr = ERROR_TIMEOUT;
+            goto err;
+        } else {
