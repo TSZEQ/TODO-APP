@@ -599,3 +599,18 @@ __sockobj_recv(lua_State *L, struct sockobj *s, char *buf, size_t buffersize, si
         errstr = ERROR_CLOSED;
         goto err;
     }
+
+    while (1) {
+        int timeout = __waitfd(s, EVENT_READABLE, tm);
+        if (timeout == -1) {
+            errstr = strerror(errno);
+            goto err;
+        } else if (timeout == 1) {
+            errstr = ERROR_TIMEOUT;
+            goto err;
+        } else {
+            int bytes_read = recv(s->fd, buf, buffersize, 0);
+            if (bytes_read > 0) {
+                *received = bytes_read;
+                return 0;
+            } else if (bytes_read == 0) {
