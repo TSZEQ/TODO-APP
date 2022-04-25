@@ -614,3 +614,17 @@ __sockobj_recv(lua_State *L, struct sockobj *s, char *buf, size_t buffersize, si
                 *received = bytes_read;
                 return 0;
             } else if (bytes_read == 0) {
+                errstr = ERROR_CLOSED;
+                goto err;
+            } else {
+                switch (errno) {
+                case EINTR:
+                case EAGAIN:
+                    // do nothing, continue
+                    continue;
+                default:
+                    errstr = strerror(errno);
+                    goto err;
+                }
+            }
+        }
