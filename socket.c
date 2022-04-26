@@ -680,3 +680,18 @@ __sockobj_recvfrom(lua_State *L, struct sockobj *s, char *buf, size_t buffersize
 err:
     assert(errstr);
     lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return -1;
+}
+/**
+ * tcpsock, err = socket.tcp()
+ */
+static int
+socket_tcp(lua_State * L)
+{
+    struct sockobj *s = __sockobj_create(L, TCPSOCK_TYPENAME);
+    if (!s) {
+        return luaL_error(L, "out of memory");
+    }
+    return 1;
+}
