@@ -695,3 +695,24 @@ socket_tcp(lua_State * L)
     }
     return 1;
 }
+
+/**
+ * udpsock, err = socket.udp()
+ */
+static int
+socket_udp(lua_State * L)
+{
+    struct sockobj *s = __sockobj_create(L, UDPSOCK_TYPENAME);
+    if (!s) {
+        return luaL_error(L, "out of memory");
+    }
+    return 1;
+}
+
+static void
+__collect_fds(lua_State * L, int tab, fd_set * set, int *max_fd)
+{
+    if (lua_isnil(L, tab))
+        return;
+
+    luaL_checktype(L, tab, LUA_TTABLE);
