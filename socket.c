@@ -659,3 +659,24 @@ __sockobj_recvfrom(lua_State *L, struct sockobj *s, char *buf, size_t buffersize
             int bytes_read = recvfrom(s->fd, buf, buffersize, 0, addr, addrlen);
             if (bytes_read > 0) {
                 *received = bytes_read;
+                return 0;
+            } else if (bytes_read == 0) {
+                errstr = ERROR_CLOSED;
+                goto err;
+            } else {
+                switch (errno) {
+                case EINTR:
+                case EAGAIN:
+                    // do nothing, continue
+                    continue;
+                default:
+                    errstr = strerror(errno);
+                    goto err;
+                }
+            }
+        }
+    }
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
