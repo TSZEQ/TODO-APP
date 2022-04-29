@@ -774,3 +774,20 @@ __return_fd(lua_State * L, fd_set * set, int max_fd)
  * readfds, writefds, err = socket.select(readfds, writefds[, timeout=-1])
  *
  *  `readfds`, `writefds` are all table of fds (which was returned from
+ *  sockobj:fileno()).
+ */
+static int
+socket_select(lua_State * L)
+{
+    int max_fd = -1;
+    fd_set rset, wset;
+    struct timeout tm;
+    double timeout = luaL_optnumber(L, 3, -1);
+    timeout_init(&tm, timeout);
+    FD_ZERO(&rset);
+    FD_ZERO(&wset);
+    __collect_fds(L, 1, &rset, &max_fd);
+    __collect_fds(L, 2, &wset, &max_fd);
+
+    int ret = __select(max_fd + 1, &rset, &wset, NULL, &tm);
+    if (ret > 0) {
