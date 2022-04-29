@@ -716,3 +716,23 @@ __collect_fds(lua_State * L, int tab, fd_set * set, int *max_fd)
         return;
 
     luaL_checktype(L, tab, LUA_TTABLE);
+
+    int i = 1;
+    while (1) {
+        int fd = -1;
+        lua_pushnumber(L, i);
+        lua_gettable(L, tab);   // get ith fd
+
+        if (lua_isnil(L, -1)) {
+            // end of table loop
+            lua_pop(L, 1);
+            break;
+        }
+
+        if (lua_isnumber(L, -1)) {
+            fd = lua_tonumber(L, -1);
+            if (fd < 0) {
+                fd = -1;
+            }
+        } else {
+            // ignore
