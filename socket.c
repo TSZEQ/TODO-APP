@@ -810,3 +810,24 @@ socket_select(lua_State * L)
 /*** sock_* methods are common to tcpsocket or udpsocket ***/
 
 /**
+ * fd = sockobj:fileno()
+ *
+ * Return the integer file descriptor of the socket.
+ */
+static int
+sockobj_fileno(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    lua_pushnumber(L, s->fd);
+    return 1;
+}
+
+/**
+ * ok, err = sockobj:close()
+ *
+ * Close the socket.
+ */
+static int
+sockobj_close(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
