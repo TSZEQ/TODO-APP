@@ -791,3 +791,22 @@ socket_select(lua_State * L)
 
     int ret = __select(max_fd + 1, &rset, &wset, NULL, &tm);
     if (ret > 0) {
+        __return_fd(L, &rset, max_fd + 1);
+        __return_fd(L, &wset, max_fd + 1);
+        return 2;
+    } else if (ret == 0) {
+        lua_pushnil(L);
+        lua_pushnil(L);
+        lua_pushstring(L, ERROR_TIMEOUT);
+        return 3;
+    } else {
+        lua_pushnil(L);
+        lua_pushnil(L);
+        lua_pushstring(L, strerror(errno));
+        return 3;
+    }
+}
+
+/*** sock_* methods are common to tcpsocket or udpsocket ***/
+
+/**
