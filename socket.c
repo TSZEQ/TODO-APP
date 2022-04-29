@@ -754,3 +754,23 @@ __collect_fds(lua_State * L, int tab, fd_set * set, int *max_fd)
         i++;
     }
 }
+
+static void
+__return_fd(lua_State * L, fd_set * set, int max_fd)
+{
+    int fd;
+    int i = 1;
+    lua_newtable(L);
+    for (fd = 0; fd < max_fd; fd++) {
+        if (FD_ISSET(fd, set)) {
+            lua_pushnumber(L, i);
+            lua_pushnumber(L, fd);
+            lua_settable(L, -3);
+        }
+    }
+}
+
+/**
+ * readfds, writefds, err = socket.select(readfds, writefds[, timeout=-1])
+ *
+ *  `readfds`, `writefds` are all table of fds (which was returned from
