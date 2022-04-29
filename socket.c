@@ -736,3 +736,21 @@ __collect_fds(lua_State * L, int tab, fd_set * set, int *max_fd)
             }
         } else {
             // ignore
+            lua_pop(L, 1);
+            continue;
+        }
+
+        if (fd != -1) {
+            if (fd >= FD_SETSIZE) {
+                luaL_argerror(L, tab, "descriptor too large for set size");
+            }
+            if (*max_fd < fd) {
+                *max_fd = fd;
+            }
+            FD_SET(fd, set);
+        }
+
+        lua_pop(L, 1);
+        i++;
+    }
+}
