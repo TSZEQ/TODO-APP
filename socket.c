@@ -869,3 +869,19 @@ sockobj_settimeout(lua_State * L)
     s->sock_timeout = timeout;
     return 0;
 }
+
+/*
+ * timeout = sockobj:gettimeout()
+ *
+ * Returns the timeout in seconds associated with socket.
+ * A negative timeout indicates that timeout is disabled, which is default.
+ */
+static int
+sockobj_gettimeout(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    lua_pushnumber(L, s->sock_timeout);
+    return 1;
+}
+
+/**
