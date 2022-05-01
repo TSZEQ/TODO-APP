@@ -856,3 +856,16 @@ sockobj_tostring(lua_State * L)
 }
 
 /**
+ * sockobj:settimeout(timeout)
+ *
+ * Set the timeout in seconds for subsequent socket operations.
+ * A negative timeout indicates that timeout is disabled, which is default.
+ */
+static int
+sockobj_settimeout(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    double timeout = (double)luaL_checknumber(L, 2);
+    s->sock_timeout = timeout;
+    return 0;
+}
