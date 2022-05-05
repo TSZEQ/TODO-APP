@@ -896,3 +896,18 @@ tcpsock_connect(lua_State * L)
 {
     struct sockobj *s = getsockobj(L);
     sockaddr_t addr;
+    socklen_t len;
+
+    if (s->fd > 0) {
+        return luaL_error(L, "already connected");
+    }
+    if (__sockobj_getaddrfromarg(L, s, SAS2SA(&addr), &len, 1)) {
+        return 2;
+    }
+    if (__sockobj_createsocket(L, s, SOCK_STREAM) == -1) {
+        return 2;
+    }
+    if (__sockobj_connect(L, s, SAS2SA(&addr), len) == -1)
+        return 2;
+
+    lua_pushboolean(L, 1);
