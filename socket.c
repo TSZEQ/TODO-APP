@@ -911,3 +911,17 @@ tcpsock_connect(lua_State * L)
         return 2;
 
     lua_pushboolean(L, 1);
+    return 1;
+}
+
+/**
+ * ok, err = tcpsock:bind(host, port)
+ * ok, err = tcpsock:connect("unix:/path/to/unix-domain.sock")
+ */
+static int
+tcpsock_bind(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    sockaddr_t addr;
+    socklen_t len;
+    char *errstr = NULL;
