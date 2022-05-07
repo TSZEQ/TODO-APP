@@ -925,3 +925,21 @@ tcpsock_bind(lua_State * L)
     sockaddr_t addr;
     socklen_t len;
     char *errstr = NULL;
+
+    if (s->fd > 0) {
+        return luaL_error(L, "already bound");
+    }
+    if (__sockobj_getaddrfromarg(L, s, SAS2SA(&addr), &len, 1)) {
+        return 2;
+    }
+    if (__sockobj_createsocket(L, s, SOCK_STREAM) == -1) {
+        return 2;
+    }
+
+    if (bind(s->fd, SAS2SA(&addr), len) < 0) {
+        errstr = strerror(errno);
+        goto err;
+    }
+
+    lua_pushboolean(L, 1);
+    return 1;
