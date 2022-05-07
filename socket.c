@@ -943,3 +943,21 @@ tcpsock_bind(lua_State * L)
 
     lua_pushboolean(L, 1);
     return 1;
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return 2;
+}
+
+/**
+ * ok, err = tcpsock:listen(backlog)
+ *
+ * Listen for connections make to the socket.
+ * The backlog argument specifies the maximum number of queue connections and
+ * should be at least 0.
+ */
+static int
+tcpsock_listen(lua_State * L)
+{
