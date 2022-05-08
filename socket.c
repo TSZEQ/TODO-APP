@@ -961,3 +961,13 @@ err:
 static int
 tcpsock_listen(lua_State * L)
 {
+    struct sockobj *s = getsockobj(L);
+    int backlog;
+    int ret;
+    char *errstr = NULL;
+    backlog = luaL_checknumber(L, 2);
+    /* To avoid problems on systems that don't allow a negative backlog, force
+     * minimu value of 0. */
+    if (backlog < 0) {
+        backlog = 0;
+    }
