@@ -971,3 +971,29 @@ tcpsock_listen(lua_State * L)
     if (backlog < 0) {
         backlog = 0;
     }
+    ret = listen(s->fd, backlog);
+    if (ret < 0) {
+        errstr = strerror(ret);
+        goto err;
+    }
+
+    lua_pushboolean(L, 1);
+    return 1;
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return 2;
+}
+
+/**
+ * sock, err = tcpsock:accept()
+ *
+ * Accept a connection. The socket must be bound to an address and listening for
+ * connections.
+ *
+ * In case of success, it returns a socket object usable to read/write data on
+ * the connection. Otherwise, it returns nil and a string describing the error.
+ */
+static int
