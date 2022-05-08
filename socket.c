@@ -997,3 +997,20 @@ err:
  * the connection. Otherwise, it returns nil and a string describing the error.
  */
 static int
+tcpsock_accept(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    sockaddr_t addr;
+    socklen_t addrlen;
+    int clientfd;
+    char *errstr = NULL;
+
+    if (!__getsockaddrlen(s, &addrlen)) {
+        errstr = strerror(errno);
+        goto err;
+    }
+
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+    int timeout = __waitfd(s, EVENT_READABLE, &tm);
+    if (timeout == -1) {
