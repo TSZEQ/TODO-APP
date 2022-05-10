@@ -1092,3 +1092,15 @@ again:
     if (buffer_size(buf) >= size) {
         goto success;
     }
+
+    while (1) {
+        int timeout = __waitfd(s, EVENT_READABLE, &tm);
+        if (timeout == -1) {
+            errstr = strerror(errno);
+            goto err;
+        } else if (timeout == 1) {
+            errstr = ERROR_TIMEOUT;
+            goto err;
+        } else {
+            if (buffer_available(buf) < RECV_BUFSIZE) {
+                buffer_grow(buf, RECV_BUFSIZE - buffer_available(buf));
