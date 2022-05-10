@@ -1045,3 +1045,14 @@ err:
 /**
  * bytes, err = tcpsock:write(data)
  *
+ * This method is a synchronous operation that will not return until all the
+ * data has been flushed into the system socket send buffer or an error occurs.
+ *
+ * In case of success, it returns the total number of bytes that have been sent.
+ * Otherwise, it returns nil and a string describing the error.
+ */
+static int
+tcpsock_write(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    size_t len;
