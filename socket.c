@@ -1074,3 +1074,21 @@ tcpsock_read(lua_State * L)
     size_t size = (int)luaL_checknumber(L, 2);
     char *errstr = NULL;
     struct buffer *buf = NULL;
+
+    if (s->buf == NULL) {
+        s->buf = buffer_create(RECV_BUFSIZE);
+    }
+    buf = s->buf;
+
+    if (s->fd == -1) {
+        errstr = ERROR_CLOSED;
+        goto err;
+    }
+
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+
+again:
+    if (buffer_size(buf) >= size) {
+        goto success;
+    }
