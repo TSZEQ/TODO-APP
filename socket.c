@@ -1056,3 +1056,21 @@ tcpsock_write(lua_State * L)
 {
     struct sockobj *s = getsockobj(L);
     size_t len;
+    const char *buf = luaL_checklstring(L, 2, &len);
+
+    if (__sockobj_write(L, s, buf, len) == -1)
+        return 2;
+
+    return 1;
+}
+
+/**
+ * data, err, partial = tcpsock:read(size)
+ */
+static int
+tcpsock_read(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    size_t size = (int)luaL_checknumber(L, 2);
+    char *errstr = NULL;
+    struct buffer *buf = NULL;
