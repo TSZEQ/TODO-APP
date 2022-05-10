@@ -1014,3 +1014,21 @@ tcpsock_accept(lua_State * L)
     timeout_init(&tm, s->sock_timeout);
     int timeout = __waitfd(s, EVENT_READABLE, &tm);
     if (timeout == -1) {
+        errstr = strerror(errno);
+        goto err;
+    } else if (timeout == 1) {
+        errstr = ERROR_TIMEOUT;
+        goto err;
+    } else {
+        clientfd = accept(s->fd, SAS2SA(&addr), &addrlen);
+        if (clientfd == -1) {
+            errstr = strerror(errno);
+            goto err;
+        }
+    }
+
+    struct sockobj *client = __sockobj_create(L, TCPSOCK_TYPENAME);
+    client->fd = clientfd;
+    client->sock_family = s->sock_family;
+    if (!client) {
+        return luaL_error(L, "out of memory");
