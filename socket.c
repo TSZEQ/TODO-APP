@@ -1138,3 +1138,25 @@ err:
     lua_pushnil(L);
     lua_pushstring(L, errstr);
     lua_pushlstring(L, buf->pos, buf->last - buf->pos);
+    buf->pos = buf->last;
+    buffer_shrink(buf);
+    return 3;
+}
+
+static int
+tcpsock_readuntil_iterator(lua_State *L)
+{
+    struct sockobj *s = lua_touserdata(L, lua_upvalueindex(1));
+    char *errstr = NULL;
+    size_t len;
+    const char *pattern = lua_tolstring(L, lua_upvalueindex(2), &len);
+    int state = lua_tointeger(L, lua_upvalueindex(4));
+    int inclusive = lua_toboolean(L, lua_upvalueindex(3));
+
+    if (s->buf == NULL) {
+        s->buf = buffer_create(RECV_BUFSIZE);
+    }
+    struct buffer *buf = s->buf;
+
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
