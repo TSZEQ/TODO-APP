@@ -1125,3 +1125,16 @@ again:
             }
         }
     }
+
+success:
+    assert(buffer_size(buf) >= size);
+    lua_pushlstring(L, buf->pos, size);
+    buf->pos += size;
+    buffer_shrink(buf);
+    return 1;
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    lua_pushlstring(L, buf->pos, buf->last - buf->pos);
