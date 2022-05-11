@@ -1160,3 +1160,15 @@ tcpsock_readuntil_iterator(lua_State *L)
 
     struct timeout tm;
     timeout_init(&tm, s->sock_timeout);
+
+again:
+    do {
+        int i = 0;
+        int bytes = buffer_size(buf);
+        if (bytes == 0) {
+            break;
+        }
+        while (i < bytes) {
+            char c = buf->pos[i];
+
+            if (c == pattern[state]) {
