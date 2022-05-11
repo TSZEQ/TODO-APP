@@ -1172,3 +1172,23 @@ again:
             char c = buf->pos[i];
 
             if (c == pattern[state]) {
+                i++;
+                state++;
+                if (state == (int)len) {
+                    /* matched */
+                    buf->pos += i;
+                    state = 0;
+                    lua_pushinteger(L, state);
+                    lua_replace(L, lua_upvalueindex(4));
+                    goto matched;
+                }
+                continue;
+            }
+
+            if (state == 0) {
+                i++;
+                continue;
+            }
+
+            state = 0;
+        }
