@@ -1216,3 +1216,19 @@ again:
                 goto again;
             } else if (bytes_read == 0) {
                 errstr = ERROR_CLOSED;
+                goto err;
+            } else {
+                switch (errno) {
+                case EINTR:
+                case EAGAIN:
+                    // do nothing, continue
+                    continue;
+                default:
+                    errstr = strerror(errno);
+                    goto err;
+                }
+            }
+        }
+    }
+
+matched:
