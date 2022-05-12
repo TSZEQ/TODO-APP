@@ -1192,3 +1192,27 @@ again:
 
             state = 0;
         }
+
+        buf->pos += i;
+        lua_pushinteger(L, state);
+        lua_replace(L, lua_upvalueindex(4));
+    } while (0);
+
+    while (1) {
+        int timeout = __waitfd(s, EVENT_READABLE, &tm);
+        if (timeout == -1) {
+            errstr = strerror(errno);
+            goto err;
+        } else if (timeout == 1) {
+            errstr = ERROR_TIMEOUT;
+            goto err;
+        } else {
+            if (buffer_available(buf) < RECV_BUFSIZE) {
+                buffer_grow(buf, RECV_BUFSIZE - buffer_available(buf));
+            }
+            int bytes_read = recv(s->fd, buf->last, RECV_BUFSIZE, 0);
+            if (bytes_read > 0) {
+                buf->last += bytes_read;
+                goto again;
+            } else if (bytes_read == 0) {
+                errstr = ERROR_CLOSED;
