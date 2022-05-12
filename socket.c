@@ -1251,3 +1251,22 @@ err:
 
 /**
  * iterator, err = tcpsock:readuntil(pattern, inclusive?)
+ */
+static int
+tcpsock_readuntil(lua_State *L)
+{
+    int n;
+    n = lua_gettop(L);
+    if (n != 2 && n != 3) {
+        return luaL_error(L, "expecting 2 or 3 arguments (including the object), but got %d", n);
+    }
+    int type = lua_type(L, 2);
+    if (type != LUA_TSTRING) {
+        return luaL_error(L, "pattern should be string");
+    }
+    if (n == 3) {
+        if (!lua_isboolean(L, 3)) {
+            luaL_error(L, "the second argument should be boolean value");
+        }
+    } else {
+        lua_pushboolean(L, 0);
