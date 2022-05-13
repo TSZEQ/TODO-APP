@@ -1296,3 +1296,18 @@ tcpsock_shutdown(lua_State * L)
         lua_pushnil(L);
         lua_pushstring(L, strerror(errno));
         return 2;
+    }
+    lua_pushboolean(L, 1);
+    return 1;
+}
+
+/**
+ * ok, err = tcpsock:setopt(opt, value)
+ */
+static int
+tcpsock_setopt(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    const char *opt = luaL_checkstring(L, 2);
+    int flag = lua_toboolean(L, 3);
+    socklen_t flagsize;
