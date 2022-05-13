@@ -1330,3 +1330,22 @@ tcpsock_setopt(lua_State * L)
     err = setsockopt(s->fd, level, optname, (void *)&flag, flagsize);
     if (err < 0) {
         lua_pushnil(L);
+        lua_pushstring(L, strerror(errno));
+        return 2;
+    }
+    lua_pushboolean(L, 1);
+    return 1;
+}
+
+/**
+ * value, err = tcpsock:getopt(opt)
+ */
+static int
+tcpsock_getopt(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    const char *opt = luaL_checkstring(L, 2);
+    int flag;
+    int err;
+    socklen_t flagsize = sizeof(flag);
+    int level;
