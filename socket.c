@@ -1280,3 +1280,19 @@ tcpsock_readuntil(lua_State *L)
 /**
  * ok, err = tcpsock:shutdown(how)
  *
+ * Shut down one or both halves of the connection.
+ *
+ * If how is SHUT_RD, further receives are disallowed.
+ * If how is SHUT_WR, further sends are disallowed.
+ * If how is SHUT_RDWR, further sends and receives are disallowed.
+ */
+static int
+tcpsock_shutdown(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    int how = luaL_checknumber(L, 2);
+    int ret = shutdown(s->fd, how);
+    if (ret < 0) {
+        lua_pushnil(L);
+        lua_pushstring(L, strerror(errno));
+        return 2;
