@@ -1311,3 +1311,22 @@ tcpsock_setopt(lua_State * L)
     const char *opt = luaL_checkstring(L, 2);
     int flag = lua_toboolean(L, 3);
     socklen_t flagsize;
+    flagsize = sizeof(flag);
+    int err;
+    int level;
+    int optname;
+    if (!strcmp(opt, OPT_TCP_KEEPALIVE)) {
+        level = SOL_SOCKET;
+        optname = SO_KEEPALIVE;
+    } else if (!strcmp(opt, OPT_TCP_NODELAY)) {
+        level = IPPROTO_TCP;
+        optname = TCP_NODELAY;
+    } else if (!strcmp(opt, OPT_TCP_REUSEADDR)) {
+        level = SOL_SOCKET;
+        optname = SO_REUSEADDR;
+    } else {
+        return luaL_error(L, "unexpected option: %s", opt);
+    }
+    err = setsockopt(s->fd, level, optname, (void *)&flag, flagsize);
+    if (err < 0) {
+        lua_pushnil(L);
