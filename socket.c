@@ -1270,3 +1270,13 @@ tcpsock_readuntil(lua_State *L)
         }
     } else {
         lua_pushboolean(L, 0);
+    }
+    lua_pushinteger(L, 0);
+
+    lua_pushcclosure(L, tcpsock_readuntil_iterator, 4);
+    return 1;
+}
+
+/**
+ * ok, err = tcpsock:shutdown(how)
+ *
