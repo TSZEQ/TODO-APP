@@ -1378,3 +1378,19 @@ tcpsock_getopt(lua_State * L)
  * Return the address of the remote endpoint.
  */
 static int
+tcpsock_getpeername(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    sockaddr_t addr;
+    socklen_t addrlen;
+    int ret = 0, err = 0;
+    if (!__getsockaddrlen(s, &addrlen)) {
+        lua_pushnil(L);
+        lua_pushstring(L, "unknown address family");
+        return 2;
+    }
+    memset(&addr, 0, addrlen);
+    ret = getpeername(s->fd, SAS2SA(&addr), &addrlen);
+    if (ret < 0) {
+        err = errno;
+        lua_pushnil(L);
