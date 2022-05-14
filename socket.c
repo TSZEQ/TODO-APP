@@ -1349,3 +1349,17 @@ tcpsock_getopt(lua_State * L)
     int err;
     socklen_t flagsize = sizeof(flag);
     int level;
+    int optname;
+    if (!strcmp(opt, OPT_TCP_KEEPALIVE)) {
+        level = SOL_SOCKET;
+        optname = SO_KEEPALIVE;
+    } else if (!strcmp(opt, OPT_TCP_NODELAY)) {
+        level = IPPROTO_TCP;
+        optname = TCP_NODELAY;
+    } else if (!strcmp(opt, OPT_TCP_REUSEADDR)) {
+        level = SOL_SOCKET;
+        optname = SO_REUSEADDR;
+    } else {
+        return luaL_error(L, "unexpected option: %s", opt);
+    }
+    err = getsockopt(s->fd, level, optname, (void *)&flag, &flagsize);
