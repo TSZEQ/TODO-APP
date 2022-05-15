@@ -1420,3 +1420,16 @@ tcpsock_getsockname(lua_State * L)
         return 2;
     }
     memset(&addr, 0, addrlen);
+    ret = getsockname(s->fd, SAS2SA(&addr), &addrlen);
+    if (ret < 0) {
+        err = errno;
+        lua_pushnil(L);
+        lua_pushstring(L, strerror(err));
+        return 2;
+    }
+    if (__sockobj_makeaddr(L, s, SAS2SA(&addr), addrlen) == -1)
+        return 2;
+    return 1;
+}
+
+/**
