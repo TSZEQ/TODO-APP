@@ -1404,3 +1404,19 @@ tcpsock_getpeername(lua_State * L)
 
 /**
  * addr, err = tcpsock:getsockname()
+ *
+ * Return the address of the local endpoint.
+ */
+static int
+tcpsock_getsockname(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    sockaddr_t addr;
+    socklen_t addrlen;
+    int ret = 0, err = 0;
+    if (!__getsockaddrlen(s, &addrlen)) {
+        lua_pushnil(L);
+        lua_pushstring(L, "unknown address family");
+        return 2;
+    }
+    memset(&addr, 0, addrlen);
