@@ -1452,3 +1452,19 @@ udpsock_connect(lua_State * L)
     if (s->fd > 0) {
         return luaL_error(L, "already connected");
     }
+    if (__sockobj_getaddrfromarg(L, s, SAS2SA(&addr), &len, 1)) {
+        return 2;
+    }
+    if (__sockobj_createsocket(L, s, SOCK_DGRAM) == -1) {
+        return 2;
+    }
+    if (__sockobj_connect(L, s, SAS2SA(&addr), len) == -1)
+        return 2;
+
+    lua_pushboolean(L, 1);
+    return 1;
+}
+
+/**
+ * ok, err = udpsock:bind(host, port)
+ * ok, err = udpsock:connect("unix:/path/to/unix-domain.sock")
