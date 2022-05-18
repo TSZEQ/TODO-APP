@@ -1468,3 +1468,20 @@ udpsock_connect(lua_State * L)
 /**
  * ok, err = udpsock:bind(host, port)
  * ok, err = udpsock:connect("unix:/path/to/unix-domain.sock")
+ */
+static int
+udpsock_bind(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    sockaddr_t addr;
+    socklen_t len;
+    char *errstr = NULL;
+
+    if (s->fd > 0) {
+        return luaL_error(L, "already bound");
+    }
+    if (__sockobj_getaddrfromarg(L, s, SAS2SA(&addr), &len, 1)) {
+        return 2;
+    }
+    if (__sockobj_createsocket(L, s, SOCK_DGRAM) == -1) {
+        return 2;
