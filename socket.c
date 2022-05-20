@@ -1500,3 +1500,16 @@ err:
     lua_pushstring(L, errstr);
     return 2;
 }
+
+/**
+ * ok, err = udpsock:send(data)
+ *
+ * Writes data on the current UDP or datagram unix domain socket object.
+ *
+ * In case of success, it returns true. Otherwise, it returns nil and a string
+ * describing the error.
+ */
+static int
+udpsock_send(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
