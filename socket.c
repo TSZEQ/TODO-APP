@@ -1513,3 +1513,19 @@ static int
 udpsock_send(lua_State * L)
 {
     struct sockobj *s = getsockobj(L);
+    size_t len;
+    const char *buf = luaL_checklstring(L, 2, &len);
+
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+    size_t sent = 0;
+    if (__sockobj_send(L, s, buf, len, &sent, &tm) == -1)
+        return 2;
+
+    lua_pushboolean(L, 1);
+    return 1;
+}
+
+/**
+ * ok, err = udpsock:sendto(data, host, port)
+ * ok, err = udpsock:sendto(data, "unix:/path/to/unix-domain.sock")
