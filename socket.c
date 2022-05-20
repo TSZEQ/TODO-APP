@@ -1485,3 +1485,18 @@ udpsock_bind(lua_State * L)
     }
     if (__sockobj_createsocket(L, s, SOCK_DGRAM) == -1) {
         return 2;
+    }
+    if (bind(s->fd, SAS2SA(&addr), len) < 0) {
+        errstr = strerror(errno);
+        goto err;
+    }
+
+    lua_pushboolean(L, 1);
+    return 1;
+
+err:
+    assert(errstr);
+    lua_pushnil(L);
+    lua_pushstring(L, errstr);
+    return 2;
+}
