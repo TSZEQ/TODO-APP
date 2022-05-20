@@ -1541,3 +1541,20 @@ udpsock_sendto(lua_State * L)
 {
     struct sockobj *s = getsockobj(L);
     size_t len;
+    const char *buf = luaL_checklstring(L, 2, &len);
+    sockaddr_t addr;
+    socklen_t addrlen;
+
+    if (__sockobj_getaddrfromarg(L, s, SAS2SA(&addr), &addrlen, 2)) {
+        return 2;
+    }
+    if (s->fd == -1) {
+        // create socket if not presented
+        if (__sockobj_createsocket(L, s, SOCK_DGRAM) == -1) {
+            return 2;
+        }
+    }
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+    size_t sent = 0;
+    if (__sockobj_sendto(L, s, buf, len, &sent, SAS2SA(&addr), addrlen, &tm) == -1)
