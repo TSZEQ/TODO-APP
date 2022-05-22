@@ -1558,3 +1558,20 @@ udpsock_sendto(lua_State * L)
     timeout_init(&tm, s->sock_timeout);
     size_t sent = 0;
     if (__sockobj_sendto(L, s, buf, len, &sent, SAS2SA(&addr), addrlen, &tm) == -1)
+        return 2;
+
+    lua_pushboolean(L, 1);
+    return 1;
+}
+
+/**
+ * data, err = udpsock:recv(buffersize)
+ *
+ * Receive up to buffersize bytes from UDP or datagram unix domain socket
+ * object.
+ *
+ * In case of success, it returns the data received; in case of error, it
+ * returns nil with a string describing the error.
+ */
+static int
+udpsock_recv(lua_State * L)
