@@ -1598,3 +1598,25 @@ udpsock_recv(lua_State * L)
  * Works exactly as the udpsock:recv method, except it returns the addr as extra
  * return values (and is therefore slightly less efficient) in
  * case of success.
+ */
+static int
+udpsock_recvfrom(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    size_t buffersize = (int)luaL_checknumber(L, 2);
+    struct buffer *buf = NULL;
+    buf = buffer_create(buffersize);
+    size_t received = 0;
+    sockaddr_t addr;
+    socklen_t addrlen;
+    if (!__getsockaddrlen(s, &addrlen)) {
+        lua_pushnil(L);
+        lua_pushnil(L);
+        lua_pushstring(L, "unknown address family");
+        return 2;
+    }
+
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+
+    if (__sockobj_recvfrom(L, s, buf->last, buffersize, &received, SAS2SA(&addr), &addrlen, &tm) == -1)
