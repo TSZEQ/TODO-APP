@@ -1620,3 +1620,22 @@ udpsock_recvfrom(lua_State * L)
     timeout_init(&tm, s->sock_timeout);
 
     if (__sockobj_recvfrom(L, s, buf->last, buffersize, &received, SAS2SA(&addr), &addrlen, &tm) == -1)
+        return 2;
+
+    lua_pushlstring(L, buf->last, received);
+    if (__sockobj_makeaddr(L, s, SAS2SA(&addr), addrlen) == -1) {
+        lua_pop(L, 1);
+        return 2;
+    }
+
+    return 2;
+}
+
+static const luaL_Reg socketlib[] = {
+    {"tcp", socket_tcp},
+    {"udp", socket_udp},
+    {"select", socket_select},
+    {NULL, NULL},
+};
+
+static const luaL_Reg sockobj_methods[] = {
