@@ -1575,3 +1575,26 @@ udpsock_sendto(lua_State * L)
  */
 static int
 udpsock_recv(lua_State * L)
+{
+    struct sockobj *s = getsockobj(L);
+    size_t buffersize = (int)luaL_checknumber(L, 2);
+    struct buffer *buf = NULL;
+    buf = buffer_create(buffersize);
+    size_t received = 0;
+
+    struct timeout tm;
+    timeout_init(&tm, s->sock_timeout);
+
+    if (__sockobj_recv(L, s, buf->last, buffersize, &received, &tm) == -1)
+        return 2;
+
+    lua_pushlstring(L, buf->last, received);
+    return 1;
+}
+
+/**
+ * data, addr, err = udpsock:recvfrom(buffersize)
+ *
+ * Works exactly as the udpsock:recv method, except it returns the addr as extra
+ * return values (and is therefore slightly less efficient) in
+ * case of success.
