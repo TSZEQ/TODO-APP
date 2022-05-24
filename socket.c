@@ -1667,3 +1667,15 @@ static const luaL_Reg tcpsock_methods[] = {
 static const luaL_Reg udpsock_methods[] = {
     {"connect", udpsock_connect},
     {"bind", udpsock_bind},
+    {"send", udpsock_send},
+    {"sendto", udpsock_sendto},
+    {"recv", udpsock_recv},
+    {"recvfrom", udpsock_recvfrom},
+    {NULL, NULL},
+};
+
+int
+luaopen_ssocket(lua_State * L)
+{
+    luaL_checkversion(L);
+    luaL_newlib(L, socketlib);
