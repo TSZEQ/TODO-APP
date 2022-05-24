@@ -1699,3 +1699,17 @@ luaopen_ssocket(lua_State * L)
     // SHUT_* sock:shutdown() parameters
     ADD_NUM_CONST(SHUT_RD);
     ADD_NUM_CONST(SHUT_WR);
+    ADD_NUM_CONST(SHUT_RDWR);
+
+    // ERROR_* some error strings, which can be used to detect errors
+    ADD_STR_CONST(ERROR_TIMEOUT);
+    ADD_STR_CONST(ERROR_CLOSED);
+    ADD_STR_CONST(ERROR_REFUSED);
+
+    // Create a metatable for tcp socket userdata.
+    luaL_newmetatable(L, TCPSOCK_TYPENAME);
+    lua_pushvalue(L, -1);
+    lua_setfield(L, -2, "__index");     /* metable.__index = metatable */
+    luaL_setfuncs(L, sockobj_methods, 0);
+    luaL_setfuncs(L, tcpsock_methods, 0);
+    lua_pop(L, 1);
