@@ -1649,3 +1649,21 @@ static const luaL_Reg sockobj_methods[] = {
 };
 
 static const luaL_Reg tcpsock_methods[] = {
+    {"connect", tcpsock_connect},
+    {"bind", tcpsock_bind},
+    {"listen", tcpsock_listen},
+    {"accept", tcpsock_accept},
+    {"write", tcpsock_write},
+    {"read", tcpsock_read},
+    {"readuntil", tcpsock_readuntil},
+    {"shutdown", tcpsock_shutdown},
+    {"setopt", tcpsock_setopt},
+    {"getopt", tcpsock_getopt},
+    {"getpeername", tcpsock_getpeername},
+    {"getsockname", tcpsock_getsockname},
+    {NULL, NULL},
+};
+
+static const luaL_Reg udpsock_methods[] = {
+    {"connect", udpsock_connect},
+    {"bind", udpsock_bind},
