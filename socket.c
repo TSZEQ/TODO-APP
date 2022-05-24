@@ -1679,3 +1679,23 @@ luaopen_ssocket(lua_State * L)
 {
     luaL_checkversion(L);
     luaL_newlib(L, socketlib);
+
+#define ADD_NUM_CONST(name)     \
+    lua_pushnumber(L, name);  \
+    lua_setfield(L, -2, # name)
+
+#define ADD_STR_CONST(name)     \
+    lua_pushstring(L, name);  \
+    lua_setfield(L, -2, # name)
+
+    // Module infos:
+    ADD_STR_CONST(_VERSION);
+
+    // OPT_* options
+    ADD_STR_CONST(OPT_TCP_NODELAY);
+    ADD_STR_CONST(OPT_TCP_KEEPALIVE);
+    ADD_STR_CONST(OPT_TCP_REUSEADDR);
+
+    // SHUT_* sock:shutdown() parameters
+    ADD_NUM_CONST(SHUT_RD);
+    ADD_NUM_CONST(SHUT_WR);
