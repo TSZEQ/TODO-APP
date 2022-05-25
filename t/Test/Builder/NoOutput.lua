@@ -1,3 +1,3 @@
 
 --
--- lua-TestMore : <http://fperrad.gi
+-- lua-TestMore : <http://fperrad.github.com/lua-T
