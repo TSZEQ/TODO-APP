@@ -4,4 +4,4 @@
 --
 
 local io = require 'io'
-loca
+local pairs = pairs
