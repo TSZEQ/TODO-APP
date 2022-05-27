@@ -11,4 +11,5 @@ _ENV = nil
 local m = {}
 
 function m.create ()
-    local tb = require 'Test.B
+    local tb = require 'Test.Builder'.create()
+ 
