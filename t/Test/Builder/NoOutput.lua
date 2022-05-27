@@ -11,4 +11,4 @@ _ENV = nil
 local m = {}
 
 function m.create ()
-    local t
+    local tb = require 'Test.B
