@@ -8,3 +8,6 @@ local pairs = pairs
 local require = require
 
 _ENV = nil
+local m = {}
+
+f
