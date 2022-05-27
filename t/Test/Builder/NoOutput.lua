@@ -5,3 +5,4 @@
 
 local io = require 'io'
 local pairs = pairs
+local require = r
