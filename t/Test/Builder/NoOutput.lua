@@ -10,4 +10,4 @@ local require = require
 _ENV = nil
 local m = {}
 
-f
+function m.c
