@@ -13,4 +13,4 @@ local m = {}
 function m.create ()
     local tb = require 'Test.Builder'.create()
     tb:output(io.tmpfile())
- 
+    tb:failure_output(i
