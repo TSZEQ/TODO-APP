@@ -16,4 +16,5 @@ function m.create ()
     tb:failure_output(io.tmpfile())
     tb:todo_output(io.tmpfile())
 
-    function tb:read
+    function tb:read (stream)
+       
