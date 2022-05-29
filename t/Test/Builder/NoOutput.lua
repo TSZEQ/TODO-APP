@@ -17,4 +17,5 @@ function m.create ()
     tb:todo_output(io.tmpfile())
 
     function tb:read (stream)
-        if     stream == '
+        if     stream == 'out' then
+   
