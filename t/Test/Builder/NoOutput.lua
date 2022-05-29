@@ -19,4 +19,4 @@ function m.create ()
     function tb:read (stream)
         if     stream == 'out' then
             local f = self:output()
-    
+            f:seek 'se
