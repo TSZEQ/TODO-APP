@@ -20,4 +20,5 @@ function m.create ()
         if     stream == 'out' then
             local f = self:output()
             f:seek 'set'
-            loca
+            local out = f:read '*a'
+ 
