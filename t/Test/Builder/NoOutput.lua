@@ -25,4 +25,4 @@ function m.create ()
             self:output(io.tmpfile())
             return out
         elseif stream == 'err' then
-            lo
+            local f = self:fa
