@@ -24,4 +24,5 @@ function m.create ()
             f:close()
             self:output(io.tmpfile())
             return out
-        elseif stream == 'e
+        elseif stream == 'err' then
+            lo
