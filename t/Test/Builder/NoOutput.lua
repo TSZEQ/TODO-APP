@@ -25,4 +25,4 @@ function m.create ()
             self:output(io.tmpfile())
             return out
         elseif stream == 'err' then
-            local f = self:fa
+            local f = self:failure_output()
