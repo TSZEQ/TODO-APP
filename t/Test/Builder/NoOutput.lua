@@ -22,4 +22,4 @@ function m.create ()
             f:seek 'set'
             local out = f:read '*a'
             f:close()
-            s
+            self:output(io.tmp
