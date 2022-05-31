@@ -23,4 +23,4 @@ function m.create ()
             local out = f:read '*a'
             f:close()
             self:output(io.tmpfile())
-      
+            ret
