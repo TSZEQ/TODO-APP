@@ -21,4 +21,5 @@ function m.create ()
             local f = self:output()
             f:seek 'set'
             local out = f:read '*a'
-            f:cl
+            f:close()
+            s
