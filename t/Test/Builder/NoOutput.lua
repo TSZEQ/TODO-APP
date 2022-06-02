@@ -26,4 +26,5 @@ function m.create ()
             return out
         elseif stream == 'err' then
             local f = self:failure_output()
-            f:
+            f:seek 'set'
+     
