@@ -27,4 +27,5 @@ function m.create ()
         elseif stream == 'err' then
             local f = self:failure_output()
             f:seek 'set'
-            local out =
+            local out = f:read '*a'
+      
