@@ -30,4 +30,5 @@ function m.create ()
             local out = f:read '*a'
             f:close()
             self:failure_output(io.tmpfile())
-       
+            return out
+ 
