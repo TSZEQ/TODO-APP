@@ -29,4 +29,5 @@ function m.create ()
             f:seek 'set'
             local out = f:read '*a'
             f:close()
-            self:failure_output(io.tmpfile
+            self:failure_output(io.tmpfile())
+       
