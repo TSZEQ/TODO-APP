@@ -32,4 +32,5 @@ function m.create ()
             self:failure_output(io.tmpfile())
             return out
         elseif stream == 'todo' then
-            local f = self:todo_o
+            local f = self:todo_output()
+            
