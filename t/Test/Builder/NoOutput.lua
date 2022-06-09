@@ -31,4 +31,5 @@ function m.create ()
             f:close()
             self:failure_output(io.tmpfile())
             return out
-        elseif stream == 'tod
+        elseif stream == 'todo' then
+            loc
