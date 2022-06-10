@@ -33,4 +33,4 @@ function m.create ()
             return out
         elseif stream == 'todo' then
             local f = self:todo_output()
-            
+            f:seek 'set'
