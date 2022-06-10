@@ -35,4 +35,4 @@ function m.create ()
             local f = self:todo_output()
             f:seek 'set'
             local out = f:read '*a'
-        
+            f:close()
