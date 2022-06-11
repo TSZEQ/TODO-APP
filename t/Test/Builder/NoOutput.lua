@@ -38,4 +38,5 @@ function m.create ()
             f:close()
             self:todo_output(io.tmpfile())
             return out
-        els
+        else
+            s
