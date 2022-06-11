@@ -39,4 +39,5 @@ function m.create ()
             self:todo_output(io.tmpfile())
             return out
         else
-            self:output():clos
+            self:output():close()
+          
