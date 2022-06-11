@@ -37,4 +37,5 @@ function m.create ()
             local out = f:read '*a'
             f:close()
             self:todo_output(io.tmpfile())
-            retur
+            return out
+        els
