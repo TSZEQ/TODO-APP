@@ -36,4 +36,5 @@ function m.create ()
             f:seek 'set'
             local out = f:read '*a'
             f:close()
-            self:todo_output(io.t
+            self:todo_output(io.tmpfile())
+            retur
