@@ -40,4 +40,4 @@ function m.create ()
             return out
         else
             self:output():close()
-          
+            self:output(io
