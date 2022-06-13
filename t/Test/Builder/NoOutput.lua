@@ -41,4 +41,5 @@ function m.create ()
         else
             self:output():close()
             self:output(io.tmpfile())
-            self:failure_output():cl
+            self:failure_output():close()
+        
