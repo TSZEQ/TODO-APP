@@ -40,4 +40,5 @@ function m.create ()
             return out
         else
             self:output():close()
-            self:output(io
+            self:output(io.tmpfile())
+      
