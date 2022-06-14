@@ -42,4 +42,5 @@ function m.create ()
             self:output():close()
             self:output(io.tmpfile())
             self:failure_output():close()
-            self:failure_output(io.tmpfi
+            self:failure_output(io.tmpfile())
+       
