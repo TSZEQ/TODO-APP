@@ -43,4 +43,4 @@ function m.create ()
             self:output(io.tmpfile())
             self:failure_output():close()
             self:failure_output(io.tmpfile())
-       
+            self:todo_ou
