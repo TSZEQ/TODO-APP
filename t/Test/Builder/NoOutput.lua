@@ -44,4 +44,5 @@ function m.create ()
             self:failure_output():close()
             self:failure_output(io.tmpfile())
             self:todo_output():close()
-            self:todo_output(io.tmpfil
+            self:todo_output(io.tmpfile())
+        en
