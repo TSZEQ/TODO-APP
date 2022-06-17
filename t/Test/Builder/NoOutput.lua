@@ -53,4 +53,4 @@ end
 
 return m
 --
--- Copyrigh
+-- Copyright (c) 2009-2012 Fr
