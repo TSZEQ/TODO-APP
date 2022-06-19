@@ -55,4 +55,5 @@ return m
 --
 -- Copyright (c) 2009-2012 Francois Perrad
 --
--- This library is licensed under the terms of th
+-- This library is licensed under the terms of the MIT/X11 license,
+-- l
