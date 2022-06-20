@@ -4,4 +4,4 @@
 --
 
 local tconcat = require 'table'.concat
-local setmetatab
+local setmetatable = setmetatable
