@@ -12,3 +12,4 @@ _ENV = nil
 local m = {}
 
 function m.new (_type)
+    local o
