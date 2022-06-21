@@ -11,4 +11,4 @@ local tb = require 'Test.Builder'.new()
 _ENV = nil
 local m = {}
 
-fun
+function m.new (_type)
