@@ -8,4 +8,7 @@ local setmetatable = setmetatable
 
 local tb = require 'Test.Builder'.new()
 
-_ENV 
+_ENV = nil
+local m = {}
+
+fun
