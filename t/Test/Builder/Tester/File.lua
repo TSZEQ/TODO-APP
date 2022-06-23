@@ -13,4 +13,5 @@ local m = {}
 
 function m.new (_type)
     local o = setmetatable({ type = _type }, { __index = m })
- 
+    o:reset()
+    ret
