@@ -17,4 +17,5 @@ function m.new (_type)
     return o
 end
 
-function m:w
+function m:write (...)
+    sel
