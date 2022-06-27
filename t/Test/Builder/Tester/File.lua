@@ -21,4 +21,5 @@ function m:write (...)
     self.got = self.got .. tconcat({...})
 end
 
-funct
+function m:reset ()
+    s
