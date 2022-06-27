@@ -26,4 +26,4 @@ function m:reset ()
     self.wanted = {}
 end
 
-functio
+function m:expect (.
