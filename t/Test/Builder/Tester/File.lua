@@ -18,4 +18,4 @@ function m.new (_type)
 end
 
 function m:write (...)
-    sel
+    self.got = self.got ..
