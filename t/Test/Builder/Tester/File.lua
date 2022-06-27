@@ -18,4 +18,7 @@ function m.new (_type)
 end
 
 function m:write (...)
-    self.got = self.got ..
+    self.got = self.got .. tconcat({...})
+end
+
+funct
