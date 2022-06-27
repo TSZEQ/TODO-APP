@@ -23,4 +23,7 @@ end
 
 function m:reset ()
     self.got = ''
-    self.wanted 
+    self.wanted = {}
+end
+
+functio
