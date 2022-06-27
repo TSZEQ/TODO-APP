@@ -22,4 +22,5 @@ function m:write (...)
 end
 
 function m:reset ()
-    s
+    self.got = ''
+    sel
