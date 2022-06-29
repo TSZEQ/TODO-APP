@@ -26,4 +26,5 @@ function m:reset ()
     self.wanted = {}
 end
 
-function m:expect (.
+function m:expect (...)
+    local ar
