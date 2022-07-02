@@ -27,4 +27,5 @@ function m:reset ()
 end
 
 function m:expect (...)
-    local ar
+    local arg = {...}
+ 
