@@ -28,4 +28,4 @@ end
 
 function m:expect (...)
     local arg = {...}
- 
+    local wanted = sel
