@@ -28,4 +28,5 @@ end
 
 function m:expect (...)
     local arg = {...}
-    local wanted = sel
+    local wanted = self.wanted
+    for i 
