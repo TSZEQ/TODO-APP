@@ -29,4 +29,5 @@ end
 function m:expect (...)
     local arg = {...}
     local wanted = self.wanted
-    for i 
+    for i = 1, #arg do
+      
