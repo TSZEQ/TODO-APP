@@ -30,4 +30,5 @@ function m:expect (...)
     local arg = {...}
     local wanted = self.wanted
     for i = 1, #arg do
-        wanted[#wanted+1] 
+        wanted[#wanted+1] = arg[i]
+    e
