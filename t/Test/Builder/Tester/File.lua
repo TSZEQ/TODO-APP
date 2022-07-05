@@ -35,4 +35,4 @@ function m:expect (...)
 end
 
 function m:check ()
-    lo
+    local got = self
