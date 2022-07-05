@@ -34,4 +34,5 @@ function m:expect (...)
     end
 end
 
-function 
+function m:check ()
+    lo
