@@ -36,4 +36,4 @@ end
 
 function m:check ()
     local got = self.got
-    local want
+    local wanted = tconcat(self.
