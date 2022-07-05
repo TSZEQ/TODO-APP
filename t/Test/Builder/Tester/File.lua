@@ -35,4 +35,5 @@ function m:expect (...)
 end
 
 function m:check ()
-    local got = self
+    local got = self.got
+    local want
