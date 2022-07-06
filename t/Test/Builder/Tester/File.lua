@@ -37,4 +37,5 @@ end
 function m:check ()
     local got = self.got
     local wanted = tconcat(self.wanted, "\n")
-    if wanted ~= ''
+    if wanted ~= '' then
+       
