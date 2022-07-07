@@ -45,4 +45,5 @@ end
 
 function m:complaint ()
     local type = self.type
-    local got = self.g
+    local got = self.got
+    local wanted
