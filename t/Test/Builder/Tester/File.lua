@@ -44,3 +44,4 @@ function m:check ()
 end
 
 function m:complaint ()
+    local ty
