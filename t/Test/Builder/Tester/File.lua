@@ -40,4 +40,7 @@ function m:check ()
     if wanted ~= '' then
         wanted = wanted .. "\n"
     end
-    return got =
+    return got == wanted
+end
+
+function 
