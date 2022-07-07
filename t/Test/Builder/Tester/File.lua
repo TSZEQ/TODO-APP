@@ -43,4 +43,4 @@ function m:check ()
     return got == wanted
 end
 
-function 
+function m:complaint ()
