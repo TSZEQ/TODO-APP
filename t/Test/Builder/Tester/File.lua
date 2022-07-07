@@ -44,4 +44,4 @@ function m:check ()
 end
 
 function m:complaint ()
-    local ty
+    local type = self.type
