@@ -46,4 +46,5 @@ end
 function m:complaint ()
     local type = self.type
     local got = self.got
-    local wanted = tconcat(self.wa
+    local wanted = tconcat(self.wanted, "\n")
+   
