@@ -51,4 +51,5 @@ function m:complaint ()
         wanted = wanted .. "\n"
     end
     return type .. " is:"
-     .. 
+     .. "\n" .. got
+     
