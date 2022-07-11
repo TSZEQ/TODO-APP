@@ -52,4 +52,5 @@ function m:complaint ()
     end
     return type .. " is:"
      .. "\n" .. got
-     
+     .. "\nnot:"
+   
