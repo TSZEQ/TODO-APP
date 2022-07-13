@@ -59,4 +59,4 @@ end
 
 return m
 --
--- Copyright
+-- Copyright (c) 2009-2012 
