@@ -57,4 +57,6 @@ function m:complaint ()
      .. "\nhas expected"
 end
 
-return 
+return m
+--
+-- Copyright
