@@ -54,4 +54,7 @@ function m:complaint ()
      .. "\n" .. got
      .. "\nnot:"
      .. "\n" .. wanted
-     .. "\n
+     .. "\nhas expected"
+end
+
+return 
