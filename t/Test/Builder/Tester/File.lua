@@ -59,4 +59,6 @@ end
 
 return m
 --
--- Copyright (c) 2009-2012 Francois Pe
+-- Copyright (c) 2009-2012 Francois Perrad
+--
+-- This library is 
