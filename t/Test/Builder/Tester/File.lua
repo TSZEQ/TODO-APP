@@ -61,4 +61,4 @@ return m
 --
 -- Copyright (c) 2009-2012 Francois Perrad
 --
--- This library is licensed und
+-- This library is licensed under the terms of the
