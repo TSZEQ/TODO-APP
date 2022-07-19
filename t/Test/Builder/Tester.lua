@@ -9,4 +9,4 @@ local type = type
 local _G = _G
 local debug = require 'debug'
 
-local tb  
+local tb  = require 'Test.Bu
