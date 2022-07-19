@@ -5,4 +5,5 @@
 
 local error = error
 local pairs = pairs
-local type
+local type = type
+local _G 
