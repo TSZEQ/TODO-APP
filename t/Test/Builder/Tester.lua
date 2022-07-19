@@ -7,4 +7,6 @@ local error = error
 local pairs = pairs
 local type = type
 local _G = _G
-local debug = require 'deb
+local debug = require 'debug'
+
+local tb  
