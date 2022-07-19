@@ -4,4 +4,5 @@
 --
 
 local error = error
-loca
+local pairs = pairs
+local type
