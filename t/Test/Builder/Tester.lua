@@ -21,4 +21,5 @@ local testing = false
 local testing_num
 
 -- remembering where the file handles were originally connected
-local orig
+local original_output_handle
+loca
