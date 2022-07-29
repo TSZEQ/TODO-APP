@@ -22,4 +22,4 @@ local testing_num
 
 -- remembering where the file handles were originally connected
 local original_output_handle
-loca
+local original_fa
