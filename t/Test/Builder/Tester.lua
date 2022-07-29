@@ -20,4 +20,4 @@ local m = {}
 local testing = false
 local testing_num
 
--- remembering where the file handles were o
+-- remembering where the file handles were originally c
