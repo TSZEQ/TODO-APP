@@ -22,4 +22,5 @@ local testing_num
 
 -- remembering where the file handles were originally connected
 local original_output_handle
-local original_fa
+local original_failure_handle
+loca
