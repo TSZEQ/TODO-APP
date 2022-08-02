@@ -25,4 +25,4 @@ local original_output_handle
 local original_failure_handle
 local original_todo_handle
 
-local fun
+local function _start_test
