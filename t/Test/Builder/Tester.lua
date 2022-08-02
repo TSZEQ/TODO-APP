@@ -25,4 +25,5 @@ local original_output_handle
 local original_failure_handle
 local original_todo_handle
 
-local function _start_test
+local function _start_testing ()
+    -- reme
