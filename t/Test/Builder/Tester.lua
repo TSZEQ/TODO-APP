@@ -26,4 +26,5 @@ local original_failure_handle
 local original_todo_handle
 
 local function _start_testing ()
-    -- remember what the handles w
+    -- remember what the handles were set to
+    
