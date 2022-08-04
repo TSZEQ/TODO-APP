@@ -28,4 +28,4 @@ local original_todo_handle
 local function _start_testing ()
     -- remember what the handles were set to
     original_output_handle  = tb:output()
-    
+    original_failure_handle
