@@ -32,4 +32,4 @@ local function _start_testing ()
     original_todo_handle    = tb:todo_output()
 
     -- switch out to our own handles
-   
+    tb:output(o
