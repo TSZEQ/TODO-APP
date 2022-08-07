@@ -31,4 +31,4 @@ local function _start_testing ()
     original_failure_handle = tb:failure_output()
     original_todo_handle    = tb:todo_output()
 
-    
+    -- switch out to o
