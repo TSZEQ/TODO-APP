@@ -33,4 +33,5 @@ local function _start_testing ()
 
     -- switch out to our own handles
     tb:output(out)
-    tb:failure_output(err
+    tb:failure_output(err)
+    tb:todo_outp
