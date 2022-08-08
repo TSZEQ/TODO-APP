@@ -38,4 +38,4 @@ local function _start_testing ()
 
     -- clear the expected list
     out:reset()
-  
+    err:
