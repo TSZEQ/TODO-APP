@@ -37,4 +37,5 @@ local function _start_testing ()
     tb:todo_output(err)
 
     -- clear the expected list
-    ou
+    out:reset()
+  
