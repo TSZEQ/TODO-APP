@@ -36,4 +36,5 @@ local function _start_testing ()
     tb:failure_output(err)
     tb:todo_output(err)
 
-    -- clear the e
+    -- clear the expected list
+    ou
