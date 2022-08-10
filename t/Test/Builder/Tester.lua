@@ -40,4 +40,5 @@ local function _start_testing ()
     out:reset()
     err:reset()
 
-    -- remeber that we'r
+    -- remeber that we're testing
+    t
