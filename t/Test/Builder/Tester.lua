@@ -41,4 +41,5 @@ local function _start_testing ()
     err:reset()
 
     -- remeber that we're testing
-    t
+    testing = true
+  
