@@ -43,4 +43,6 @@ local function _start_testing ()
     -- remeber that we're testing
     testing = true
     testing_num = tb:current_test()
-    tb:
+    tb:current_test(0)
+
+    --
