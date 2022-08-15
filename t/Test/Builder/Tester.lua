@@ -45,4 +45,5 @@ local function _start_testing ()
     testing_num = tb:current_test()
     tb:current_test(0)
 
-    -- look, we shouldn't do the ending st
+    -- look, we shouldn't do the ending stuff
+    tb.no_endin
