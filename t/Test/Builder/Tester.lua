@@ -49,4 +49,4 @@ local function _start_testing ()
     tb.no_ending = true
 end
 
-func
+function m.test_out (..
