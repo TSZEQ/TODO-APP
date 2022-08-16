@@ -50,4 +50,5 @@ local function _start_testing ()
 end
 
 function m.test_out (...)
-    if not test
+    if not testing then
+    
