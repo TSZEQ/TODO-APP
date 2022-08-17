@@ -56,4 +56,4 @@ function m.test_out (...)
     out:expect(...)
 end
 
-function m.tes
+function m.test_err (...)
