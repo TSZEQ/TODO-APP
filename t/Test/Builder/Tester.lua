@@ -59,4 +59,5 @@ end
 function m.test_err (...)
     if not testing then
         _start_testing()
-    en
+    end
+    err:expect(
