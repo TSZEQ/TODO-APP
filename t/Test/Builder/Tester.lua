@@ -51,4 +51,4 @@ end
 
 function m.test_out (...)
     if not testing then
-    
+        _start_test
