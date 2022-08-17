@@ -54,3 +54,6 @@ function m.test_out (...)
         _start_testing()
     end
     out:expect(...)
+end
+
+function m.tes
