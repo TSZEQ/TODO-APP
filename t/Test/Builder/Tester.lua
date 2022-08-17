@@ -53,4 +53,4 @@ function m.test_out (...)
     if not testing then
         _start_testing()
     end
- 
+    out:expect(...)
