@@ -58,4 +58,5 @@ end
 
 function m.test_err (...)
     if not testing then
-        _start_
+        _start_testing()
+    en
