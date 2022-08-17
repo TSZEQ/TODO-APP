@@ -60,4 +60,7 @@ function m.test_err (...)
     if not testing then
         _start_testing()
     end
-    err:expect(
+    err:expect(...)
+end
+
+func
