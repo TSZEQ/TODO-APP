@@ -63,4 +63,4 @@ function m.test_err (...)
     err:expect(...)
 end
 
-func
+function m.test_fail (offse
