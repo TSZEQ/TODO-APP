@@ -63,4 +63,5 @@ function m.test_err (...)
     err:expect(...)
 end
 
-function m.test_fail (offse
+function m.test_fail (offset)
+    offset = offset 
