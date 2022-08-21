@@ -68,3 +68,4 @@ function m.test_fail (offset)
     if not testing then
         _start_testing()
     end
+    local info = debu
