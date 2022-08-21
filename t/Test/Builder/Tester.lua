@@ -66,4 +66,5 @@ end
 function m.test_fail (offset)
     offset = offset or 0
     if not testing then
-        _start_tes
+        _start_testing()
+    end
