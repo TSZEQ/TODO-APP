@@ -69,4 +69,4 @@ function m.test_fail (offset)
         _start_testing()
     end
     local info = debug.getinfo(2)
-    local prog = info
+    local prog = info.short_src
