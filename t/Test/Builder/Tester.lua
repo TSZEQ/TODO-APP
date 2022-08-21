@@ -64,4 +64,5 @@ function m.test_err (...)
 end
 
 function m.test_fail (offset)
-    offset = offset 
+    offset = offset or 0
+    if not test
