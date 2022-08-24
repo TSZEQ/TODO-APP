@@ -76,4 +76,5 @@ end
 
 function m.test_diag (...)
     local arg = {...}
-    if not te
+    if not testing then
+    
