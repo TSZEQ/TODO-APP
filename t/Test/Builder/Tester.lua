@@ -72,3 +72,6 @@ function m.test_fail (offset)
     local prog = info.short_src
     local line = info.currentline + offset
     err:expect("#     Failed test (" .. prog .. " at line " .. line .. ")")
+end
+
+function 
