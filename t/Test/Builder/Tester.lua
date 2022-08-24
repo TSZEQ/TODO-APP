@@ -79,4 +79,4 @@ function m.test_diag (...)
     if not testing then
         _start_testing()
     end
-    for
+    for i = 1, #arg 
