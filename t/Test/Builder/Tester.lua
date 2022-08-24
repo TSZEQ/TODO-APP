@@ -74,4 +74,4 @@ function m.test_fail (offset)
     err:expect("#     Failed test (" .. prog .. " at line " .. line .. ")")
 end
 
-function 
+function m.test_diag (
