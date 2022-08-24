@@ -75,4 +75,5 @@ function m.test_fail (offset)
 end
 
 function m.test_diag (...)
-    local arg = {
+    local arg = {...}
+    if not te
