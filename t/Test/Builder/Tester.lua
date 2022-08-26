@@ -81,3 +81,6 @@ function m.test_diag (...)
     end
     for i = 1, #arg do
         err:expect("# " .. arg[i])
+    end
+end
+
