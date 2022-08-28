@@ -85,3 +85,5 @@ function m.test_diag (...)
 end
 
 function m.test_test (args)
+    local mess
+    i
