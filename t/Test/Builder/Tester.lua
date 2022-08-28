@@ -86,4 +86,4 @@ end
 
 function m.test_test (args)
     local mess
-    i
+    if type(args) == '
