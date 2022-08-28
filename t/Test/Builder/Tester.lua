@@ -90,4 +90,7 @@ function m.test_test (args)
         mess = args[1]
     else
         mess = args
-        args 
+        args = {}
+    end
+
+    if not
