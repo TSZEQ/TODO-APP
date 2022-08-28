@@ -84,4 +84,4 @@ function m.test_diag (...)
     end
 end
 
-function m.te
+function m.test_test (args)
