@@ -94,4 +94,4 @@ function m.test_test (args)
     end
 
     if not testing then
-        error "
+        error "Not testing.  You mu
