@@ -93,4 +93,5 @@ function m.test_test (args)
         args = {}
     end
 
-    if not
+    if not testing then
+  
