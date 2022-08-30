@@ -94,4 +94,4 @@ function m.test_test (args)
     end
 
     if not testing then
-        error "Not testing.  You must declare output with 
+        error "Not testing.  You must declare output with a test function 
