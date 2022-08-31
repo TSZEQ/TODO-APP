@@ -98,4 +98,4 @@ function m.test_test (args)
     end
 
     -- okay, reconnect the test suite back to the saved handles
-    tb
+    tb:output(original_output_ha
