@@ -99,4 +99,4 @@ function m.test_test (args)
 
     -- okay, reconnect the test suite back to the saved handles
     tb:output(original_output_handle)
-    tb:fail
+    tb:failure_output(original_failur
