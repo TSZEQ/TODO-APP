@@ -97,4 +97,5 @@ function m.test_test (args)
         error "Not testing.  You must declare output with a test function first."
     end
 
-    -- okay, reconnect the test suite back to the 
+    -- okay, reconnect the test suite back to the saved handles
+    tb
