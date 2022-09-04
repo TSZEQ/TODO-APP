@@ -106,4 +106,4 @@ function m.test_test (args)
     tb:current_test(testing_num)
     testing = false
 
-    -- check the output w
+    -- check the output we've stashed
