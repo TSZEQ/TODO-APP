@@ -107,3 +107,4 @@ function m.test_test (args)
     testing = false
 
     -- check the output we've stashed
+    local 
