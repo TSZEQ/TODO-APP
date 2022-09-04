@@ -104,4 +104,6 @@ function m.test_test (args)
 
     -- restore the test no, etc, back to the original point
     tb:current_test(testing_num)
-    testing = fa
+    testing = false
+
+    -- che
