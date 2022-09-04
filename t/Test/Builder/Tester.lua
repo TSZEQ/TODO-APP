@@ -103,4 +103,4 @@ function m.test_test (args)
     tb:todo_output(original_todo_handle)
 
     -- restore the test no, etc, back to the original point
-    tb:cur
+    tb:current_test(testing_num)
