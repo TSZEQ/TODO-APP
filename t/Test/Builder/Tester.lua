@@ -110,4 +110,4 @@ function m.test_test (args)
     local pass = (args.skip_out or out:check())
              and (args.skip_err or err:check())
     tb:ok(pass, mess)
-    if n
+    if not pass then
