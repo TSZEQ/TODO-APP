@@ -108,4 +108,5 @@ function m.test_test (args)
 
     -- check the output we've stashed
     local pass = (args.skip_out or out:check())
-             and (args.skip_err or err:check
+             and (args.skip_err or err:check())
+    tb:ok(pa
