@@ -112,4 +112,5 @@ function m.test_test (args)
     tb:ok(pass, mess)
     if not pass then
         -- print out the diagnostic information about why this
-        -- test 
+        -- test failed
+        if n
