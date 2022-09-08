@@ -113,4 +113,4 @@ function m.test_test (args)
     if not pass then
         -- print out the diagnostic information about why this
         -- test failed
-        if n
+        if not out:check
