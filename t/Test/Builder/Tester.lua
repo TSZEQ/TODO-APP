@@ -114,4 +114,4 @@ function m.test_test (args)
         -- print out the diagnostic information about why this
         -- test failed
         if not out:check() then
-            tb
+            tb:diag(out:compl
