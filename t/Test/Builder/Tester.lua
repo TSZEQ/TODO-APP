@@ -116,4 +116,5 @@ function m.test_test (args)
         if not out:check() then
             tb:diag(out:complaint())
         end
-        if not err:ch
+        if not err:check() then
+         
