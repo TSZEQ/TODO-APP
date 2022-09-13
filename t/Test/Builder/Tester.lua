@@ -123,4 +123,4 @@ function m.test_test (args)
 end
 
 function m.line_num ()
-    return debug.ge
+    return debug.getinfo(2).currentlin
