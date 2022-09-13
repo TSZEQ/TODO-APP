@@ -123,4 +123,4 @@ function m.test_test (args)
 end
 
 function m.line_num ()
-    r
+    return debug.ge
