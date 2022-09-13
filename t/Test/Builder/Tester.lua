@@ -122,4 +122,5 @@ function m.test_test (args)
     end
 end
 
-function m.li
+function m.line_num ()
+    r
