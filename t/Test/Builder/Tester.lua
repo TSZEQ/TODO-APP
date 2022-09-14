@@ -123,4 +123,7 @@ function m.test_test (args)
 end
 
 function m.line_num ()
-    return debug.getinfo(2).currentlin
+    return debug.getinfo(2).currentline
+end
+
+for k, v in 
