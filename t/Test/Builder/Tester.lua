@@ -126,4 +126,4 @@ function m.line_num ()
     return debug.getinfo(2).currentline
 end
 
-for k, v in 
+for k, v in pairs(m) do  --
