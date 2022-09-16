@@ -133,4 +133,4 @@ end
 return m
 
 --
--- Cop
+-- Copyright (c) 2009-2
