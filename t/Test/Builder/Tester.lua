@@ -127,4 +127,7 @@ function m.line_num ()
 end
 
 for k, v in pairs(m) do  -- injection
-  
+    _G[k] = v
+end
+
+ret
