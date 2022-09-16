@@ -130,4 +130,7 @@ for k, v in pairs(m) do  -- injection
     _G[k] = v
 end
 
-ret
+return m
+
+--
+-- Cop
