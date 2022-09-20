@@ -27,3 +27,20 @@ local testerr = io and (io.stderr or io.stdout)
 function m.puts (f, str)
     f:write(str)
 end
+
+local function _print_to_fh (self, f, ...)
+    if f then
+        local msg = table.concat({...})
+        msg:gsub("\n", "\n" .. self.indent)
+        m.puts(f, self.indent .. msg .. "\n")
+    else
+        print(self.indent, ...)
+    end
+end
+
+local function _print (self, ...)
+    _print_to_fh(self, self:output(), ...)
+end
+
+local function print_comment (self, f, ...)
+    local arg = {...}
