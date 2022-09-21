@@ -89,3 +89,17 @@ function m:child (name)
     child.out_file  = self.out_file
     child.fail_file = in_todo(self) and self.todo_file or self.fail_file
     child.todo_file = self.todo_file
+    child.parent    = self
+    self.child_name = name
+    return child
+end
+
+local function plan_handled (self)
+    return self.have_plan or self.no_plan or self._skip_all
+end
+
+function m:subtest (name, func)
+    if type(func) ~= 'function' then
+        error("subtest()'s second argument must be a function")
+    end
+    local child = self:child(name)
