@@ -60,3 +60,16 @@ function m.create ()
     }
     setmetatable(o, {
         __index = function (t, k)
+                        return rawget(t, 'data')[k]
+                  end,
+        __newindex = function (t, k, v)
+                        rawget(o, 'data')[k] = v
+                  end,
+    })
+    o:reset()
+    return o
+end
+
+local test
+function m.new ()
+    test = test or m.create()
