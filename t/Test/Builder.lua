@@ -73,3 +73,19 @@ end
 local test
 function m.new ()
     test = test or m.create()
+    return test
+end
+
+local function in_todo (self)
+    return self.todo_upto >= self.curr_test
+end
+
+function m:child (name)
+    if self.child_name then
+        error("You already have a child named (" .. self.child_name .. " running")
+    end
+    local child = m.create()
+    child.indent    = self.indent .. '    '
+    child.out_file  = self.out_file
+    child.fail_file = in_todo(self) and self.todo_file or self.fail_file
+    child.todo_file = self.todo_file
