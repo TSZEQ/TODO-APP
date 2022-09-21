@@ -103,3 +103,14 @@ function m:subtest (name, func)
         error("subtest()'s second argument must be a function")
     end
     local child = self:child(name)
+    local parent = self.data
+    self.data = child.data
+    local r, msg = pcall(func)
+    child.data = self.data
+    self.data = parent
+    if not r and not child._skip_all then
+        error(msg, 0)
+    end
+    if not plan_handled(child) then
+        child:done_testing()
+    end
