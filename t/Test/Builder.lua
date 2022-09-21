@@ -44,3 +44,19 @@ end
 
 local function print_comment (self, f, ...)
     local arg = {...}
+    for k, v in pairs(arg) do
+        arg[k] = tostring(v)
+    end
+    local msg = table.concat(arg)
+    msg = msg:gsub("\n", "\n# ")
+    msg = msg:gsub("\n# \n", "\n#\n")
+    msg = msg:gsub("\n# $", '')
+    _print_to_fh(self, f, "# ", msg)
+end
+
+function m.create ()
+    local o = {
+        data = setmetatable({}, { __index = m }),
+    }
+    setmetatable(o, {
+        __index = function (t, k)
