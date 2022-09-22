@@ -130,3 +130,20 @@ function m:finalize ()
     if self._skip_all then
         parent:skip(self._skip_all)
     elseif self.curr_test == 0 then
+        parent:ok(false, "No tests run for subtest \"" .. name .. "\"", 2)
+    else
+        parent:ok(self.is_passing, name, 2)
+    end
+    self.parent = nil
+end
+
+function m:reset ()
+    self.curr_test = 0
+    self._done_testing = false
+    self.expected_tests = 0
+    self.is_passing = true
+    self.todo_upto = -1
+    self.todo_reason = nil
+    self.have_plan = false
+    self.no_plan = false
+    self._skip_all = false
