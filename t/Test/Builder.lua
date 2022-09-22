@@ -147,3 +147,18 @@ function m:reset ()
     self.have_plan = false
     self.no_plan = false
     self._skip_all = false
+    self.have_output_plan = false
+    self.indent = ''
+    self.parent = false
+    self.child_name = false
+    self:reset_outputs()
+end
+
+local function _output_plan (self, max, directive, reason)
+    if self.have_output_plan then
+        error("The plan was already output")
+    end
+    local out = "1.." .. max
+    if directive then
+        out = out .. " # " .. directive
+    end
