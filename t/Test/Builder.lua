@@ -114,3 +114,19 @@ function m:subtest (name, func)
     if not plan_handled(child) then
         child:done_testing()
     end
+    child:finalize()
+end
+
+function m:finalize ()
+    if not self.parent then
+        return
+    end
+    if self.child_name then
+        error("Can't call finalize() with child (" .. self.child_name .. " active")
+    end
+    local parent = self.parent
+    local name = parent.child_name
+    parent.child_name = nil
+    if self._skip_all then
+        parent:skip(self._skip_all)
+    elseif self.curr_test == 0 then
