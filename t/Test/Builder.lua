@@ -162,3 +162,22 @@ local function _output_plan (self, max, directive, reason)
     if directive then
         out = out .. " # " .. directive
     end
+    if reason then
+        out = out .. " " .. reason
+    end
+    _print(self, out)
+    self.have_output_plan = true
+end
+
+function m:plan (arg)
+    if self.have_plan then
+        error("You tried to plan twice")
+    end
+    if type(arg) == 'string' and arg == 'no_plan' then
+        self.have_plan = true
+        self.no_plan = true
+        return true
+    elseif type(arg) ~= 'number' then
+        error("Need a number of tests")
+    elseif arg < 0 then
+        error("Number of tests must be a positive integer.  You gave it '" .. arg .."'.")
