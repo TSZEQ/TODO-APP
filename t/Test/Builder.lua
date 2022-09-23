@@ -202,3 +202,16 @@ function m:done_testing (num_tests)
     if self.expected_tests > 0 and num_tests ~= self.expected_tests then
         self:ok(false, "planned to run " .. self.expected_tests
                     .. " but done_testing() expects " .. num_tests)
+    else
+        self.expected_tests = num_tests
+    end
+    if not self.have_output_plan then
+        _output_plan(self, num_tests)
+    end
+    self.have_plan = true
+    -- The wrong number of tests were run
+    if self.expected_tests ~= self.curr_test then
+        self.is_passing = false
+    end
+    -- No tests were run
+    if self.curr_test == 0 then
