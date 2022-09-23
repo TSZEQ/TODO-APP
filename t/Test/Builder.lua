@@ -181,3 +181,24 @@ function m:plan (arg)
         error("Need a number of tests")
     elseif arg < 0 then
         error("Number of tests must be a positive integer.  You gave it '" .. arg .."'.")
+    else
+        self.expected_tests = arg
+        self.have_plan = true
+        _output_plan(self, arg)
+        return arg
+    end
+end
+
+function m:done_testing (num_tests)
+    if num_tests then
+        self.no_plan = false
+    end
+    num_tests = num_tests or self.curr_test
+    if self._done_testing then
+        tb:ok(false, "done_testing() was already called")
+        return
+    end
+    self._done_testing = true
+    if self.expected_tests > 0 and num_tests ~= self.expected_tests then
+        self:ok(false, "planned to run " .. self.expected_tests
+                    .. " but done_testing() expects " .. num_tests)
