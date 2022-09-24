@@ -245,3 +245,20 @@ local function _check_is_passing_plan (self)
     local plan = self:has_plan()
     if not plan or not tonumber(plan) then
         return
+    end
+    if plan < self.curr_test then
+        self.is_passing = false
+    end
+end
+
+function m:ok (test, name, level)
+    if self.child_name then
+        name = name or 'unnamed test'
+        self.is_passing = false
+        error("Cannot run test (" .. name .. ") with active children")
+    end
+    name = name or ''
+    level = level or 0
+    self.curr_test = self.curr_test + 1
+    name = tostring(name)
+    if name:match('^[%d%s]+$') then
