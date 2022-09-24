@@ -215,3 +215,16 @@ function m:done_testing (num_tests)
     end
     -- No tests were run
     if self.curr_test == 0 then
+        self.is_passing = false
+    end
+end
+
+function m:has_plan ()
+    if self.expected_tests > 0 then
+        return self.expected_tests
+    end
+    if self.no_plan then
+        return 'no_plan'
+    end
+    return nil
+end
