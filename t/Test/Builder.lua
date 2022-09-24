@@ -228,3 +228,20 @@ function m:has_plan ()
     end
     return nil
 end
+
+function m:skip_all (reason)
+    if self.have_plan then
+        error("You tried to plan twice")
+    end
+    self._skip_all = reason
+    _output_plan(self, 0, 'SKIP', reason)
+    if self.parent then
+        error("skip_all in child", 0)
+    end
+    os.exit(0)
+end
+
+local function _check_is_passing_plan (self)
+    local plan = self:has_plan()
+    if not plan or not tonumber(plan) then
+        return
