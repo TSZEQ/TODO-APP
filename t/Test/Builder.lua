@@ -271,3 +271,20 @@ function m:ok (test, name, level)
     end
     out = out .. "ok " .. self.curr_test
     if name ~= '' then
+        out = out .. " - " .. name
+    end
+    if self.todo_reason and in_todo(self) then
+        out = out .. " # TODO " .. self.todo_reason
+    end
+    _print(self, out)
+    if not test then
+        local msg = in_todo(self) and "Failed (TODO)" or "Failed"
+        local info = debug and debug.getinfo(3 + level)
+        if info then
+            local file = info.short_src
+            local line = info.currentline
+            self:diag("    " .. msg .. " test (" .. file .. " at line " .. line .. ")")
+        else
+            self:diag("    " .. msg .. " test")
+        end
+    end
