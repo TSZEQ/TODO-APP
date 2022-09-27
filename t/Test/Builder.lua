@@ -322,3 +322,28 @@ function m:skip (reason)
         name = name .. " " .. reason
     end
     self:ok(true, name, 1)
+end
+
+function m:todo_skip (reason)
+    local name = "# TODO & SKIP"
+    if reason then
+        name = name .. " " .. reason
+    end
+    self:ok(false, name, 1)
+end
+
+function m:skip_rest (reason)
+    for i = self.curr_test, self.expected_tests do
+        tb:skip(reason)
+    end
+end
+
+local function diag_file (self)
+    if in_todo(self) then
+        return self:todo_output()
+    else
+        return self:failure_output()
+    end
+end
+
+function m:diag (...)
