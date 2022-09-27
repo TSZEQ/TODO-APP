@@ -347,3 +347,14 @@ local function diag_file (self)
 end
 
 function m:diag (...)
+    print_comment(self, diag_file(self), ...)
+end
+
+function m:note (...)
+    print_comment(self, self:output(), ...)
+end
+
+function m:output (f)
+    if f then
+        self.out_file = f
+    end
