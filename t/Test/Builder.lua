@@ -288,3 +288,21 @@ function m:ok (test, name, level)
             self:diag("    " .. msg .. " test")
         end
     end
+    if not test and not in_todo(self) then
+        self.is_passing = false
+    end
+    _check_is_passing_plan(self)
+end
+
+function m:BAIL_OUT (reason)
+    local out = "Bail out!"
+    if reason then
+        out = out .. "  " .. reason
+    end
+    _print(self, out)
+    os.exit(255)
+end
+
+function m:current_test (num)
+    if num then
+        self.curr_test = num
