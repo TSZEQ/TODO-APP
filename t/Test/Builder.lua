@@ -358,3 +358,15 @@ function m:output (f)
     if f then
         self.out_file = f
     end
+    return self.out_file
+end
+
+function m:failure_output (f)
+    if f then
+        self.fail_file = f
+    end
+    return self.fail_file
+end
+
+function m:todo_output (f)
+    if f then
