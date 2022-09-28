@@ -370,3 +370,20 @@ end
 
 function m:todo_output (f)
     if f then
+        self.todo_file = f
+    end
+    return self.todo_file
+end
+
+function m:reset_outputs ()
+    self:output(testout)
+    self:failure_output(testerr)
+    self:todo_output(testout)
+end
+
+return m
+--
+-- Copyright (c) 2009-2012 Francois Perrad
+--
+-- This library is licensed under the terms of the MIT/X11 license,
+-- like Lua itself.
