@@ -41,3 +41,20 @@ end
 function m.nok (test, name)
     tb:ok(not test, name)
 end
+
+function m.is (got, expected, name)
+    local pass = got == expected
+    tb:ok(pass, name)
+    if not pass then
+        tb:diag("         got: " .. tostring(got)
+           .. "\n    expected: " .. tostring(expected))
+    end
+end
+
+function m.isnt (got, expected, name)
+    local pass = got ~= expected
+    tb:ok(pass, name)
+    if not pass then
+        tb:diag("         got: " .. tostring(got)
+           .. "\n    expected: anything else")
+    end
