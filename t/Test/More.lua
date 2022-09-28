@@ -28,3 +28,16 @@ end
 
 function m.skip_all (reason)
     tb:skip_all(reason)
+end
+
+function m.BAIL_OUT (reason)
+    tb:BAIL_OUT(reason)
+end
+
+function m.ok (test, name)
+    tb:ok(test, name)
+end
+
+function m.nok (test, name)
+    tb:ok(not test, name)
+end
