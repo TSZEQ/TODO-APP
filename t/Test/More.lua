@@ -58,3 +58,18 @@ function m.isnt (got, expected, name)
         tb:diag("         got: " .. tostring(got)
            .. "\n    expected: anything else")
     end
+end
+
+function m.like (got, pattern, name)
+    if type(pattern) ~= 'string' then
+        tb:ok(false, name)
+        tb:diag("pattern isn't a string : " .. tostring(pattern))
+        return
+    end
+    got = tostring(got)
+    local pass = got:match(pattern)
+    tb:ok(pass, name)
+    if not pass then
+        tb:diag("                  '" .. got .. "'"
+           .. "\n    doesn't match '" .. pattern .. "'")
+    end
