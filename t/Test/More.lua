@@ -73,3 +73,23 @@ function m.like (got, pattern, name)
         tb:diag("                  '" .. got .. "'"
            .. "\n    doesn't match '" .. pattern .. "'")
     end
+end
+
+function m.unlike (got, pattern, name)
+    if type(pattern) ~= 'string' then
+        tb:ok(false, name)
+        tb:diag("pattern isn't a string : " .. tostring(pattern))
+        return
+    end
+    got = tostring(got)
+    local pass = not got:match(pattern)
+    tb:ok(pass, name)
+    if not pass then
+        tb:diag("                  '" .. got .. "'"
+           .. "\n          matches '" .. pattern .. "'")
+    end
+end
+
+local cmp = {
+    ['<']  = function (a, b) return a <  b end,
+    ['<='] = function (a, b) return a <= b end,
