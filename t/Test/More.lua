@@ -93,3 +93,22 @@ end
 local cmp = {
     ['<']  = function (a, b) return a <  b end,
     ['<='] = function (a, b) return a <= b end,
+    ['>']  = function (a, b) return a >  b end,
+    ['>='] = function (a, b) return a >= b end,
+    ['=='] = function (a, b) return a == b end,
+    ['~='] = function (a, b) return a ~= b end,
+}
+
+function m.cmp_ok (this, op, that, name)
+    local f = cmp[op]
+    if not f then
+        tb:ok(false, name)
+        tb:diag("unknown operator : " .. tostring(op))
+        return
+    end
+    local pass = f(this, that)
+    tb:ok(pass, name)
+    if not pass then
+        tb:diag("    " .. tostring(this)
+           .. "\n        " .. op
+           .. "\n    " .. tostring(that))
