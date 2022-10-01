@@ -162,3 +162,24 @@ function m.eq_array (got, expected, name)
     end
     for i = 1, #expected do
         local v = expected[i]
+        local val = got[i]
+        if val ~= v then
+            tb:ok(false, name)
+            tb:diag("    at index: " .. tostring(i)
+               .. "\n         got: " .. tostring(val)
+               .. "\n    expected: " .. tostring(v))
+            return
+        end
+    end
+    local extra = #got - #expected
+    if extra ~= 0 then
+        tb:ok(false, name)
+        tb:diag("    " .. tostring(extra) .. " unexpected item(s)")
+    else
+        tb:ok(true, name)
+    end
+end
+
+function m.is_deeply (got, expected, name)
+    if type(got) ~= 'table' then
+        tb:ok(false, name)
