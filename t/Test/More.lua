@@ -112,3 +112,12 @@ function m.cmp_ok (this, op, that, name)
         tb:diag("    " .. tostring(this)
            .. "\n        " .. op
            .. "\n    " .. tostring(that))
+    end
+end
+
+function m.type_ok (val, t, name)
+    if type(t) ~= 'string' then
+        tb:ok(false, name)
+        tb:diag("type isn't a string : " .. tostring(t))
+        return
+    end
