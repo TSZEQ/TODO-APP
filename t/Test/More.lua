@@ -121,3 +121,22 @@ function m.type_ok (val, t, name)
         tb:diag("type isn't a string : " .. tostring(t))
         return
     end
+    if type(val) == t then
+        tb:ok(true, name)
+    else
+        tb:ok(false, name)
+        tb:diag("    " .. tostring(val) .. " isn't a '" .. t .."' it's a '" .. type(val) .. "'")
+    end
+end
+
+function m.subtest (name, func)
+    tb:subtest(name, func)
+end
+
+function m.pass (name)
+    tb:ok(true, name)
+end
+
+function m.fail (name)
+    tb:ok(false, name)
+end
