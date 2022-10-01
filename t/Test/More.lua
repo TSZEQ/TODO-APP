@@ -140,3 +140,25 @@ end
 function m.fail (name)
     tb:ok(false, name)
 end
+
+function m.require_ok (mod)
+    local r, msg = pcall(require, mod)
+    tb:ok(r, "require '" .. tostring(mod) .. "'")
+    if not r then
+        tb:diag("    " .. msg)
+    end
+    return r
+end
+
+function m.eq_array (got, expected, name)
+    if type(got) ~= 'table' then
+        tb:ok(false, name)
+        tb:diag("got value isn't a table : " .. tostring(got))
+        return
+    elseif type(expected) ~= 'table' then
+        tb:ok(false, name)
+        tb:diag("expected value isn't a table : " .. tostring(expected))
+        return
+    end
+    for i = 1, #expected do
+        local v = expected[i]
