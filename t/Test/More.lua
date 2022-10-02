@@ -183,3 +183,21 @@ end
 function m.is_deeply (got, expected, name)
     if type(got) ~= 'table' then
         tb:ok(false, name)
+        tb:diag("got value isn't a table : " .. tostring(got))
+        return
+    elseif type(expected) ~= 'table' then
+        tb:ok(false, name)
+        tb:diag("expected value isn't a table : " .. tostring(expected))
+        return
+    end
+    local msg1
+    local msg2
+    local seen = {}
+
+    local function deep_eq (t1, t2, key_path)
+        if t1 == t2 or seen[t1] then
+            return true
+        end
+        seen[t1] = true
+        for k, v2 in pairs(t2) do
+            local v1 = t1[k]
