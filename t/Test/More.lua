@@ -201,3 +201,19 @@ function m.is_deeply (got, expected, name)
         seen[t1] = true
         for k, v2 in pairs(t2) do
             local v1 = t1[k]
+            if type(v1) == 'table' and type(v2) == 'table' then
+                local r = deep_eq(v1, v2, key_path .. "." .. tostring(k))
+                if not r then
+                    return false
+                end
+            else
+                if v1 ~= v2 then
+                    key_path = key_path .. "." .. tostring(k)
+                    msg1 = "     got" .. key_path .. ": " .. tostring(v1)
+                    msg2 = "expected" .. key_path .. ": " .. tostring(v2)
+                    return false
+                end
+            end
+        end
+        for k in pairs(t1) do
+            local v2 = t2[k]
