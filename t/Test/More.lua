@@ -230,3 +230,23 @@ function m.is_deeply (got, expected, name)
     local pass = deep_eq(got, expected, '')
     tb:ok(pass, name)
     if not pass then
+        tb:diag("    Tables begin differing at:")
+        tb:diag("    " .. msg1)
+        tb:diag("    " .. msg2)
+    end
+end
+
+function m.error_is (code, arg2, arg3, arg4)
+    local params, expected, name
+    if type(arg2) == 'table' then
+        params = arg2
+        expected = arg3
+        name = arg4
+    else
+        params = {}
+        expected = arg2
+        name = arg3
+    end
+    if type(code) == 'string' then
+        local msg
+        code, msg = loadstring(code)
