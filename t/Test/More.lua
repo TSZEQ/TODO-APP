@@ -250,3 +250,19 @@ function m.error_is (code, arg2, arg3, arg4)
     if type(code) == 'string' then
         local msg
         code, msg = loadstring(code)
+        if not code then
+            tb:ok(false, name)
+            tb:diag("    can't compile code :"
+               .. "\n    " .. msg)
+            return
+        end
+    end
+    local r, msg = pcall(code, unpack(params))
+    if r then
+        tb:ok(false, name)
+        tb:diag("    unexpected success"
+           .. "\n    expected: " .. tostring(expected))
+    else
+        local pass = msg == expected
+        tb:ok(pass, name)
+        if not pass then
