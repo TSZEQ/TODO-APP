@@ -266,3 +266,17 @@ function m.error_is (code, arg2, arg3, arg4)
         local pass = msg == expected
         tb:ok(pass, name)
         if not pass then
+            tb:diag("         got: " .. msg
+               .. "\n    expected: " .. tostring(expected))
+        end
+    end
+end
+
+function m.error_like (code, arg2, arg3, arg4)
+    local params, pattern, name
+    if type(arg2) == 'table' then
+        params = arg2
+        pattern = arg3
+        name = arg4
+    else
+        params = {}
