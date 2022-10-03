@@ -217,3 +217,16 @@ function m.is_deeply (got, expected, name)
         end
         for k in pairs(t1) do
             local v2 = t2[k]
+            if v2 == nil then
+                key_path = key_path .. "." .. tostring(k)
+                msg1 = "     got" .. key_path .. ": " .. tostring(t1[k])
+                msg2 = "expected" .. key_path .. ": " .. tostring(v2)
+                return false
+            end
+        end
+        return true
+    end -- deep_eq
+
+    local pass = deep_eq(got, expected, '')
+    tb:ok(pass, name)
+    if not pass then
