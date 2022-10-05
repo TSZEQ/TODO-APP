@@ -323,3 +323,16 @@ function m.lives_ok (code, arg2, arg3)
         name = arg2
     end
     if type(code) == 'string' then
+        local msg
+        code, msg = loadstring(code)
+        if not code then
+            tb:ok(false, name)
+            tb:diag("    can't compile code :"
+               .. "\n    " .. msg)
+            return
+        end
+    end
+    local r, msg = pcall(code, unpack(params))
+    tb:ok(r, name)
+    if not r then
+        tb:diag("    " .. msg)
