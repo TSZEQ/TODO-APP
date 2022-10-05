@@ -300,3 +300,26 @@ function m.error_like (code, arg2, arg3, arg4)
            .. "\n    expected: " .. tostring(pattern))
     else
         if type(pattern) ~= 'string' then
+            tb:ok(false, name)
+            tb:diag("pattern isn't a string : " .. tostring(pattern))
+            return
+        end
+        local pass = msg:match(pattern)
+        tb:ok(pass, name)
+        if not pass then
+            tb:diag("                  '" .. msg .. "'"
+               .. "\n    doesn't match '" .. pattern .. "'")
+        end
+    end
+end
+
+function m.lives_ok (code, arg2, arg3)
+    local params, name
+    if type(arg2) == 'table' then
+        params = arg2
+        name = arg3
+    else
+        params = {}
+        name = arg2
+    end
+    if type(code) == 'string' then
