@@ -336,3 +336,13 @@ function m.lives_ok (code, arg2, arg3)
     tb:ok(r, name)
     if not r then
         tb:diag("    " .. msg)
+    end
+end
+
+function m.diag (msg)
+    tb:diag(msg)
+end
+
+function m.note (msg)
+    tb:note(msg)
+end
