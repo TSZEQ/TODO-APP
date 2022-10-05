@@ -280,3 +280,23 @@ function m.error_like (code, arg2, arg3, arg4)
         name = arg4
     else
         params = {}
+        pattern = arg2
+        name = arg3
+    end
+    if type(code) == 'string' then
+        local msg
+        code, msg = loadstring(code)
+        if not code then
+            tb:ok(false, name)
+            tb:diag("    can't compile code :"
+               .. "\n    " .. msg)
+            return
+        end
+    end
+    local r, msg = pcall(code, unpack(params))
+    if r then
+        tb:ok(false, name)
+        tb:diag("    unexpected success"
+           .. "\n    expected: " .. tostring(pattern))
+    else
+        if type(pattern) ~= 'string' then
