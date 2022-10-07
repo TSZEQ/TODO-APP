@@ -346,3 +346,25 @@ end
 function m.note (msg)
     tb:note(msg)
 end
+
+function m.skip (reason, count)
+    count = count or 1
+    for i = 1, count do
+        tb:skip(reason)
+    end
+end
+
+function m.todo_skip (reason, count)
+    count = count or 1
+    for i = 1, count do
+        tb:todo_skip(reason)
+    end
+end
+
+function m.skip_rest (reason)
+    tb:skip_rest(reason)
+end
+
+function m.todo (reason, count)
+    tb:todo(reason, count)
+end
