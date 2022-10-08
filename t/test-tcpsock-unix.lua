@@ -1,2 +1,2 @@
 -- setup path
-local filepath = debug
+local filepath = debug.getinfo(1)
