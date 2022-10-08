@@ -7,7 +7,11 @@ package.cpath = string.format(";%s/?.so;%s/../?.so;", filedir, filedir) .. packa
 
 local socket = require "ssocket"
 
-local udpsock = socket.udp()
-local ok, err = udpsock:bind("127.0.0.1", 8888)
-data, err = udpsock:recv(8192)
-print(data)
+TEST_UNIX_SOCK = "/tmp/test-socket.sock"
+
+os.remove(TEST_UNIX_SOCK)
+local tcpsock = socket.tcp()
+local ok, err = tcpsock:bind(TEST_UNIX_SOCK)
+tcpsock:listen(5)
+conn, err = tcpsock:accept()
+os.remove(TEST_UNIX_SOCK)
