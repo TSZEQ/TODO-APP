@@ -1,2 +1,2 @@
 -- setup path
-local
+local filepath = debug
