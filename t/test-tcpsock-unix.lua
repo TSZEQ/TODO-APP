@@ -5,4 +5,5 @@ package.path = string.format(";%s/?.lua;%s/../?.lua;", filedir, filedir) .. pack
 package.cpath = string.format(";%s/?.so;%s/../?.so;", filedir, filedir) .. package.cpath
 
 require 'Test.More'
-local socket = require "ss
+local socket = require "ssocket"
+local lua_bin =
