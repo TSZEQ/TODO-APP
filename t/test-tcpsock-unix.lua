@@ -5,4 +5,4 @@ package.path = string.format(";%s/?.lua;%s/../?.lua;", filedir, filedir) .. pack
 package.cpath = string.format(";%s/?.so;%s/../?.so;", filedir, filedir) .. package.cpath
 
 require 'Test.More'
-local soc
+local socket = require "ss
