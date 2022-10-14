@@ -6,4 +6,6 @@ package.cpath = string.format(";%s/?.so;%s/../?.so;", filedir, filedir) .. packa
 
 require 'Test.More'
 local socket = require "ssocket"
-local lua_bin = os.getenv("LUA") or
+local lua_bin = os.getenv("LUA") or "lua"
+
+plan(
