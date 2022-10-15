@@ -10,4 +10,6 @@ local lua_bin = os.getenv("LUA") or "lua"
 
 plan(6)
 
-TEST_UNIX_SOCK = "/tmp/te
+TEST_UNIX_SOCK = "/tmp/test-socket.sock"
+
+--
