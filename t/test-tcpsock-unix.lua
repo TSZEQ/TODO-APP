@@ -8,4 +8,6 @@ require 'Test.More'
 local socket = require "ssocket"
 local lua_bin = os.getenv("LUA") or "lua"
 
-plan(
+plan(6)
+
+TEST_UNI
