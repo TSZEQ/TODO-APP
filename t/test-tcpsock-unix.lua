@@ -12,4 +12,5 @@ plan(6)
 
 TEST_UNIX_SOCK = "/tmp/test-socket.sock"
 
---
+-- 1. Error
+local tcps
