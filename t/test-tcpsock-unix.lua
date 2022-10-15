@@ -14,4 +14,4 @@ TEST_UNIX_SOCK = "/tmp/test-socket.sock"
 
 -- 1. Error
 local tcpsock = socket.tcp()
-local ok, err = tcpsock:connect(
+local ok, err = tcpsock:connect("unix:/tmp/nosuc
