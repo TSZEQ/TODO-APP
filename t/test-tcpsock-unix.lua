@@ -15,4 +15,5 @@ TEST_UNIX_SOCK = "/tmp/test-socket.sock"
 -- 1. Error
 local tcpsock = socket.tcp()
 local ok, err = tcpsock:connect("unix:/tmp/nosuchfile.sock")
-i
+is(ok, nil)
+is(err, "
