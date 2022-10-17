@@ -16,4 +16,5 @@ TEST_UNIX_SOCK = "/tmp/test-socket.sock"
 local tcpsock = socket.tcp()
 local ok, err = tcpsock:connect("unix:/tmp/nosuchfile.sock")
 is(ok, nil)
-is(err, "No such file
+is(err, "No such file or directory")
+tcpsock
