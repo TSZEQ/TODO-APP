@@ -17,4 +17,6 @@ local tcpsock = socket.tcp()
 local ok, err = tcpsock:connect("unix:/tmp/nosuchfile.sock")
 is(ok, nil)
 is(err, "No such file or directory")
-tcpsock
+tcpsock:close()
+
+-- 2.
