@@ -19,4 +19,5 @@ is(ok, nil)
 is(err, "No such file or directory")
 tcpsock:close()
 
--- 2.
+-- 2. bind
+os.remove(T
