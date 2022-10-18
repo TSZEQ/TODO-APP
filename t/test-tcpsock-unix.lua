@@ -20,4 +20,5 @@ is(err, "No such file or directory")
 tcpsock:close()
 
 -- 2. bind
-os.remove(T
+os.remove(TEST_UNIX_SOCK)
+lo
