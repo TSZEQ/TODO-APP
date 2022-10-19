@@ -21,4 +21,4 @@ tcpsock:close()
 
 -- 2. bind
 os.remove(TEST_UNIX_SOCK)
-local tcpso
+local tcpsock = socket.tc
