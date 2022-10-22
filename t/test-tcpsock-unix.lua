@@ -22,4 +22,5 @@ tcpsock:close()
 -- 2. bind
 os.remove(TEST_UNIX_SOCK)
 local tcpsock = socket.tcp()
-local ok, err = tcpsock:bind(TEST_U
+local ok, err = tcpsock:bind(TEST_UNIX_SOCK)
+is(ok, tr
