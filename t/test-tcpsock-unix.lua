@@ -28,4 +28,4 @@ is(err, nil)
 tcpsock:close()
 
 -- 3. connect
-o
+os.execute(str
