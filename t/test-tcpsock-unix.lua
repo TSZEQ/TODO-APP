@@ -25,4 +25,7 @@ local tcpsock = socket.tcp()
 local ok, err = tcpsock:bind(TEST_UNIX_SOCK)
 is(ok, true)
 is(err, nil)
-tcpsock:close(
+tcpsock:close()
+
+-- 3. connect
+o
