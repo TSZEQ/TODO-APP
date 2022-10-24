@@ -24,4 +24,5 @@ os.remove(TEST_UNIX_SOCK)
 local tcpsock = socket.tcp()
 local ok, err = tcpsock:bind(TEST_UNIX_SOCK)
 is(ok, true)
-is(err, nil
+is(err, nil)
+tcpsock:close(
