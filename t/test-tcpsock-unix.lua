@@ -28,4 +28,4 @@ is(err, nil)
 tcpsock:close()
 
 -- 3. connect
-os.execute(string.format("%s %s/
+os.execute(string.format("%s %s/start_unix_server.lua &>/
