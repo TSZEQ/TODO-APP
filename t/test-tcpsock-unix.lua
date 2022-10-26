@@ -29,4 +29,4 @@ tcpsock:close()
 
 -- 3. connect
 os.execute(string.format("%s %s/start_unix_server.lua &>/dev/null &", lua_bin, filedir))
-os.exe
+os.execute("sleep 1") -- ma
