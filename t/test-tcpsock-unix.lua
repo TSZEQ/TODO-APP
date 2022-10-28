@@ -31,4 +31,4 @@ tcpsock:close()
 os.execute(string.format("%s %s/start_unix_server.lua &>/dev/null &", lua_bin, filedir))
 os.execute("sleep 1") -- make sure service is on
 local tcpsock = socket.tcp()
-local ok, err = tcp
+local ok, err = tcpsock:connect(TE
