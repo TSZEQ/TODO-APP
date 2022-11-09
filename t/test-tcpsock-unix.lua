@@ -33,4 +33,4 @@ os.execute("sleep 1") -- make sure service is on
 local tcpsock = socket.tcp()
 local ok, err = tcpsock:connect(TEST_UNIX_SOCK)
 is(ok, true)
-is
+is(err, nil)
