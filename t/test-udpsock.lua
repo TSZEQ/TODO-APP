@@ -13,3 +13,22 @@ plan(12)
 function string_repeat(str, num)
   local s = ""
   for i = 1, num do
+    s = s .. str
+  end
+  return s
+end
+local packet_data = "A udp packet."
+
+-- 1. Basic
+local udpsock = socket.udp()
+ok, err = udpsock:connect('localhost', 8888)
+is(ok, true)
+like(udpsock, "<udpsock: %d+>") -- __tostring
+is(udpsock:send("OK"), true)
+is(udpsock:close(), true)
+udpsock:close()
+
+-- 2. Exchange datagram packet
+local recvsock = socket.udp()
+ok, err = recvsock:bind('localhost', 8888)
+is(ok, true)
