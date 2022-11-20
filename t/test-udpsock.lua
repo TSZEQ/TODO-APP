@@ -32,3 +32,18 @@ udpsock:close()
 local recvsock = socket.udp()
 ok, err = recvsock:bind('localhost', 8888)
 is(ok, true)
+local sendsock = socket.udp()
+sendsock:connect('localhost', 8888)
+is(sendsock:send(packet_data), true)
+data, err = recvsock:recv(8192)
+is(data, packet_data)
+
+-- 3. sendto/recvfrom
+local sendsock = socket.udp()
+ok, err = sendsock:sendto(packet_data, 'localhost', 8888)
+data, addr, err = recvsock:recvfrom(8192)
+is(data, packet_data)
+is(addr[1], '127.0.0.1')
+type_ok(addr[2], "number")
+
+-- 4. send big data
