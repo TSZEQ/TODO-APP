@@ -1,3 +1,3 @@
 import socket
 
-# addre
+# addressing information of ta
