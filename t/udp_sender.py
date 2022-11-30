@@ -1,3 +1,4 @@
 import socket
 
-# addressing information of ta
+# addressing information of target
+IPADDR = 'loc
