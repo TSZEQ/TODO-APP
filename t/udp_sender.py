@@ -1,4 +1,5 @@
 import socket
 
 # addressing information of target
-IPADDR = 'loc
+IPADDR = 'localhost'
+PORTNUM
