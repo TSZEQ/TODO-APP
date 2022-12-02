@@ -4,4 +4,4 @@ import socket
 IPADDR = 'localhost'
 PORTNUM = 8888
 
-# enter th
+# enter the data content of
