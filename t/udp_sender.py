@@ -2,4 +2,6 @@ import socket
 
 # addressing information of target
 IPADDR = 'localhost'
-PORTNUM
+PORTNUM = 8888
+
+# enter th
