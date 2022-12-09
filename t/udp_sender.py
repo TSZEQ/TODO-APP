@@ -5,4 +5,4 @@ IPADDR = 'localhost'
 PORTNUM = 8888
 
 # enter the data content of the UDP packet as hex
-PACKETDATA = "Hell
+PACKETDATA = "Hello World! A ud
