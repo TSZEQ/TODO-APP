@@ -6,4 +6,6 @@ PORTNUM = 8888
 
 # enter the data content of the UDP packet as hex
 PACKETDATA = "Hello World! A udp packet."
-#PACKETDATA = 'a' *  1
+#PACKETDATA = 'a' *  1024
+
+# initiali
