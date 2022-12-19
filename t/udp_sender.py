@@ -8,4 +8,4 @@ PORTNUM = 8888
 PACKETDATA = "Hello World! A udp packet."
 #PACKETDATA = 'a' *  1024
 
-# initialize a socket, th
+# initialize a socket, think of it as a cable
