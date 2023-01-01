@@ -10,3 +10,4 @@ PACKETDATA = "Hello World! A udp packet."
 
 # initialize a socket, think of it as a cable
 # SOCK_DGRAM specifies that this is UDP
+s = socket
