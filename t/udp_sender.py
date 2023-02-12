@@ -16,4 +16,6 @@ s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)
 s.connect((IPADDR, PORTNUM))
 
 # send the command
-s.send(
+s.send(PACKETDATA)
+
+# clos
