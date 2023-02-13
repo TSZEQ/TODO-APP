@@ -18,4 +18,5 @@ s.connect((IPADDR, PORTNUM))
 # send the command
 s.send(PACKETDATA)
 
-# clos
+# close the socket
+s.
